@@ -1,0 +1,17 @@
+<div class="amcheckout-delivery-date" data-bind="blockLoader: isLoading">
+    <p class="step-title amcheckout-title"
+       data-amcheckout-js="step-title"
+       data-bind="i18n: getDeliveryDateName()"
+       data-role="title"></p>
+
+    <div class="step-content amcheckout-content"
+         data-amcheckout-js="step-content"
+         data-bind="mageInit: {'checkoutCollapsibleSteps': {}}">
+        <div class="amcheckout-wrapper">
+            <each args="data: elems, as: 'element'">
+                <render if="hasTemplate()"/>
+            </each>
+            <div class="clearer"></div>
+        </div>
+    </div>
+</div>

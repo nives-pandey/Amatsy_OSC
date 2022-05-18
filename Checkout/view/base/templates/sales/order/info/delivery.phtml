@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var \Amasty\Checkout\Block\Sales\Order\Info\Delivery $block */ ?>
+<?php if ($fields = $block->getDeliveryDateFields()) : ?>
+    <div class="block ">
+        <div class="block-title"><strong><?= $block->escapeHtml(__('Delivery Information')); ?></strong></div>
+        <div class="block-content">
+            <div class="box">
+                <?php foreach ($fields as $field) : ?>
+                    <div class="box-content">
+                        <p>
+                            <?= $block->escapeHtml(__($field['label'])); ?> : <?= $block->escapeHtml($field['value'])?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

@@ -1,0 +1,100 @@
+<!-- ko if: canShowDeleteButton() -->
+<div class="delete" data-bind="click: deleteItem.bind($data, $parent)"/>
+<!-- /ko -->
+
+<!-- ko fastForEach: getRegion('before_details') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<div class="product-item-details" data-bind="css: {'-editable': isEditable($parent)}">
+    <!-- ko ifnot: isEditable($parent) -->
+    <div class="product-item-inner">
+        <div class="product-item-name-block">
+            <strong class="product-item-name" data-bind="html: $parent.name"></strong>
+            <div class="details-qty amcheckout-qty">
+                <span class="label"><!-- ko i18n: 'Qty' --><!-- /ko --></span>
+                <span class="value" data-bind="text: $parent.qty"></span>
+            </div>
+        </div>
+        <!-- ko foreach: getRegion('after_details') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+
+    <!-- ko if: (JSON.parse($parent.options).length > 0)-->
+    <div class="product options" data-bind="mageInit: {'collapsible':{'openedState': 'active'}}">
+        <span data-role="title" class="toggle"><!-- ko i18n: 'View Details' --><!-- /ko --></span>
+        <div data-role="content" class="content">
+            <strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
+            <dl class="item-options">
+                <!--ko foreach: JSON.parse($parent.options)-->
+                <dt class="label" data-bind="text: label"></dt>
+                <!-- ko if: ($data.full_view)-->
+                <dd class="values" data-bind="html: full_view"></dd>
+                <!-- /ko -->
+                <!-- ko ifnot: ($data.full_view)-->
+                <dd class="values" data-bind="html: value"></dd>
+                <!-- /ko -->
+                <!-- /ko -->
+            </dl>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: isEditable($parent) -->
+    <form action="" method="post" data-role="product-attributes" data-bind="attr: {'data-item-id': $parent.item_id}">
+        <div class="product-item-inner">
+            <div class="product-item-name-block">
+                <strong class="product-item-name" data-bind="text: $parent.name"></strong>
+                <div class="details-qty amcheckout-qty">
+                    <span class="label"><!-- ko i18n: 'Qty' --><!-- /ko --></span>
+                    <!-- ko if: isDecimal($parent) -->
+                    <input class="qty" type="number" step="0.1"  name="qty" data-bind="value: $parent.qty" autocomplete="off">
+                    <!-- /ko -->
+                    <!-- ko ifnot: isDecimal($parent) -->
+                    <input class="qty" type="number" step="1"  name="qty" data-bind="value: $parent.qty" autocomplete="off">
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- ko fastForEach: getRegion('after_details') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+
+        <!-- ko if: (JSON.parse($parent.options).length > 0)-->
+        <div class="product options" data-bind="mageInit: {'collapsible':{'openedState': 'active'}}">
+            <span data-role="title" class="toggle"><!-- ko i18n: 'View Details' --><!-- /ko --></span>
+            <div data-role="content" class="content">
+                <strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
+                <div class="item-options" data-bind="html: getConfigurableOptions($parent)" />
+                <div class="item-options" data-bind="afterRender: getCustomOptions($parent, $element)" />
+
+                <dl class="item-options">
+                    <!--ko foreach: JSON.parse($parent.options)-->
+                    <dt class="label" data-bind="text: label"></dt>
+                    <!-- ko if: ($data.full_view)-->
+                    <dd class="values" data-bind="html: full_view"></dd>
+                    <!-- /ko -->
+                    <!-- ko ifnot: ($data.full_view)-->
+                    <dd class="values" data-bind="html: value"></dd>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </dl>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!--ko text: initOptions($parent) -->
+        <!-- /ko -->
+
+        <button class="action primary checkout" type="submit" data-bind="
+                        click: updateItem.bind($data, $parent),
+                        attr: {title: $t('Update')},
+                        visible: $parent.isUpdated">
+            <span data-bind="i18n: 'Update'"></span>
+        </button>
+    </form>
+    <!-- /ko -->
+</div>
+<!-- ko fastForEach: getRegion('item_message') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->

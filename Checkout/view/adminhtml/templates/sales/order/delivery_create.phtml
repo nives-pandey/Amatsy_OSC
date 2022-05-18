@@ -1,0 +1,14 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+</section><section class="admin__page-section amasty-deliverydate">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+    </div>
+    <?php foreach ($this->getFormElements() as $element): ?>
+        <?= $element->toHtml() ?>
+    <?php endforeach; ?>

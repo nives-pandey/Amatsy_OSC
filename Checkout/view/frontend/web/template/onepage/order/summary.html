@@ -1,0 +1,12 @@
+<div class="opc-block-summary amcheckout-summary-container" data-bind="blockLoader: isLoading">
+    <p class="step-title amcheckout-title" data-amcheckout-js="step-title" data-bind="i18n: getNameSummary()"></p>
+    <div class="step-content amcheckout-content"
+         data-amcheckout-js="step-content"
+         data-bind="mageInit: {'summaryWidget': {}}">
+        <div class="amcheckout-wrapper">
+            <!-- ko foreach: elems() -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<input type="checkbox"
+       class="admin__control-checkbox"
+       simple-checked="checked"
+       ko-disabled="disabled"
+       ko-focused="focused"
+       ko-value="value"
+       attr="id: uid, name: inputName"/>
+
+<label class="admin__field-label" attr="for: uid">
+    <span text="description"/>
+    <span class="edit-link" data-bind="i18n: '[edit]', click: showPopupHandler" />
+</label>

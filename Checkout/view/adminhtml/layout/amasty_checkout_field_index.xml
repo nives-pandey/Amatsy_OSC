@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Amasty_Base::css/config.css"/>
+        <css src="Amasty_Checkout::css/fields.css" />
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs" name="amasty_checkout_fields_tabs" >
+                <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs\CustomerInformation" name="amasty_checkout_tab_customer_content"/>
+                <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs\ShippingMethod" name="amasty_checkout_tab_shipping_content"/>
+                <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs\PaymentMethod" name="amasty_checkout_tab_payment_content"/>
+                <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs\OrderSummary" name="amasty_checkout_tab_summary_content"/>
+                <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\Tabs\AdditionalOptions" name="amasty_checkout_tab_additional_content"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">amasty_checkout_tab_customer</argument>
+                    <argument name="block" xsi:type="string">amasty_checkout_tab_customer_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">amasty_checkout_tab_shipping</argument>
+                    <argument name="block" xsi:type="string">amasty_checkout_tab_shipping_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">amasty_checkout_tab_payment</argument>
+                    <argument name="block" xsi:type="string">amasty_checkout_tab_payment_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">amasty_checkout_tab_summary</argument>
+                    <argument name="block" xsi:type="string">amasty_checkout_tab_summary_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">amasty_checkout_tab_additional</argument>
+                    <argument name="block" xsi:type="string">amasty_checkout_tab_additional_content</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Store\Switcher" template="Magento_Backend::store/switcher.phtml" name="store.switcher" before="-">
+                <arguments>
+                    <argument name="switch_websites" xsi:type="string">0</argument>
+                    <argument name="switch_store_groups" xsi:type="string">0</argument>
+                    <argument name="switch_store_views" xsi:type="string">1</argument>
+                    <argument name="default_selection_name" xsi:type="string" translate="true">Default Values</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Template" template="Amasty_Checkout::fields/edit/comment.phtml" name="amasty_checkout_fields_comment"/>
+            <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit" name="amasty_checkout_fields_edit"/>
+            <block class="Amasty\Checkout\Block\Adminhtml\Renderer\Template" template="Amasty_Checkout::fields/edit/form_after.phtml" name="amasty_checkout_fields_form_after"/>
+            <block class="Amasty\Checkout\Block\Adminhtml\Field\Edit\CustomFields" template="Amasty_Checkout::widget/form/fields.phtml" name="amasty_checkout_custom_fields_element"/>
+        </referenceContainer>
+    </body>
+</page>

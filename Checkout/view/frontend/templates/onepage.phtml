@@ -1,0 +1,128 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/** @var \Magento\Checkout\Block\Onepage $block */
+/** @var \Amasty\Checkout\Helper\Onepage $helper */
+/** @var \Amasty\Checkout\Model\Optimization\BundleService $bundleService */
+$helper = $block->getData('amcheckout_helper');
+$bundleService = $block->getData('bundleService');
+$design = $helper->isModernCheckoutDesign() ? 'modern' : 'classic';
+$layout = $helper->getDesignLayout();
+?>
+
+<div id="checkout"
+     data-bind="scope:'checkout'"
+     class="checkout-container am-checkout -<?= /* @noEscape */ $design?> -layout-<?= /* @noEscape */ $layout?>"
+     data-amcheckout-js="checkout">
+    <div class="checkout-header">
+        <h1 class="title"><?= $block->escapeHtml($helper->getTitle()); ?></h1>
+        <div class="description"><?= /* @noEscape */ $helper->getDescription(); ?></div>
+    </div>
+
+    <div id="checkout-loader" data-role="checkout-loader" class="loading-mask" data-mage-init='{"checkoutLoader": {}}'>
+        <div class="loader">
+            <img src="<?=
+            /* @noEscape */ $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?= $block->escapeHtml(__('Loading...')); ?>"
+                 style="position: absolute;">
+        </div>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#checkout": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout();?>
+            }
+        }
+    </script>
+    <script>
+        require.config({
+            config: {
+                mixins: {
+                    'Magento_Ui/js/view/messages': {
+                        'Amasty_Checkout/js/view/messages-mixin': true
+                    }
+                }
+            }
+        });
+        window.checkoutConfig = <?= /* @escapeNotVerified */ \Zend_Json::encode($block->getCheckoutConfig()); ?>;
+        // Create aliases for customer.js model from customer module
+        window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+        window.customerData = window.checkoutConfig.customerData;
+        window.checkoutDesign = "<?= $helper->isModernCheckoutDesign() ? 'modern' : 'classic'?>";
+        window.checkoutLayout = "<?= $block->escapeHtml($helper->getLayoutTemplate())?>";
+    </script>
+    <script>
+        require([
+            'mage/url',
+            'Magento_Ui/js/block-loader'
+        ], function(url, blockLoader) {
+            blockLoader("<?=
+                /* @noEscape */ $block->getViewFileUrl('images/loader-1.gif'); ?>");
+            return url.setBaseUrl('<?= /* @noEscape */ $block->getBaseUrl();?>');
+        });
+    </script>
+<?php if ($bundleService->canCollectBundle()): ?>
+    <script>
+        require([
+            'rjsResolver',
+            'underscore',
+            '<?= \Amasty\Checkout\Model\Optimization\BundleService::COLLECT_SCRIPT_PATH ?>',
+        ], function(requireResolver, _, createBundle) {
+            requireResolver(_.debounce(createBundle, 1000));
+        });
+    </script>
+<?php endif; ?>
+
+    <?php if ($helper->isAddressSuggestionEnabled() && ($apiKey = $helper->getGoogleMapsKey())): ?>
+    <script>
+        window.amasty_checkout_regions = <?= /* @noEscape */ $helper->getRegionsJson() ?>;
+        function amasty_checkout_gmaps_init() {
+            require(['Amasty_Checkout/js/autocomplete'], function (autocomplete) {
+                autocomplete.isReady(true);
+            });
+        }
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=<?=
+        /* @noEscape */ $block->stripTags($apiKey);?>&libraries=places&callback=amasty_checkout_gmaps_init"
+        async defer>
+    </script>
+    <?php endif ?>
+</div>
+<script>
+require(['jquery', 'jquery/ui'], function($){ 
+    $( document ).ready(function() {
+
+      //wait until the last element (.payment-method) being rendered
+      var existCondition = setInterval(function() {
+       if ($('#shipping-new-address-form fieldset.field.street').length) { 
+        clearInterval(existCondition);
+        runMyFunction();
+       }
+      }, 100);
+
+      function runMyFunction(){
+       $("<span class='street-info'><?= $block->escapeHtml("Enter Street or Building for Auto Fill Address"); ?></span>").insertAfter("#shipping-new-address-form fieldset.field.street legend.label");
+      }
+	
+		var existCondition1 = setInterval(function() {
+       if ($('#payment.checkout-payment-method').length) { 
+        clearInterval(existCondition1);
+        runMyFunction1();
+       }
+      }, 100);
+
+      function runMyFunction1(){
+       $("#payment.checkout-payment-method").parent().addClass('paymentblocksection');;
+      }
+	  
+    }); 
+ }); 
+ 
+</script>

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/** @var Amasty\Checkout\Block\Config\LayoutBuilderField $block */
+$element = $block->getElement();
+?>
+
+<input type="hidden"
+       id="amcheckout-frontend-config"
+       name="<?= /* @noEscape */ $element->getName() ?>"
+       value="<?= /* @noEscape */ $element->getEscapedValue() ?>" />
+

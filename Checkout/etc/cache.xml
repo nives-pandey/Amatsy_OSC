@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="checkout" translate="label,description" instance="Amasty\Checkout\Cache\Type">
+        <label>One Step Checkout</label>
+        <description>Checkout page cache (including but not limited to UI components configuration, position of page elements, inactive heavyweight components of the page and so on)</description>
+    </type>
+</config>

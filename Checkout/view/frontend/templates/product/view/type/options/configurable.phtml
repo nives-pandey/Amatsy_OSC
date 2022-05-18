@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/** @var $block \Magento\ConfigurableProduct\Block\Product\View\Type\Configurable*/
+$_product    = $block->getProduct();
+$_attributes = $block->decorateArray($block->getAllowAttributes());
+$_itemId     = $block->getData('quote_item')->getId();
+?>
+<?php if ($_product->isSaleable() && count($_attributes)) :?>
+    <input type="hidden" name="selected_configurable_option" value="" />
+    <?php foreach ($_attributes as $_attribute) : ?>
+        <div class="field configurable required">
+            <label class="label"
+                   for="attribute<?= $block->escapeHtml($_itemId) ?>-
+                   <?= $block->escapeHtml($_attribute->getAttributeId()) ?>">
+                <span><?= $block->escapeHtml($_attribute->getProductAttribute()->getStoreLabel()) ?></span>
+            </label>
+            <div class="control">
+                <select name="super_attribute[<?= $block->escapeHtml($_attribute->getAttributeId()) ?>]"
+                        data-selector="super_attribute[<?= $block->escapeHtml($_itemId) ?>]
+                        [<?= $block->escapeHtml($_attribute->getAttributeId())?>]"
+                        data-validate="{required:true}"
+                        id="attribute<?= $block->escapeHtml($_itemId) ?>-
+                        <?= $block->escapeHtml($_attribute->getAttributeId()) ?>"
+                        class="super-attribute-select"
+                        data-attribute-id="<?= $block->escapeHtml($_attribute->getAttributeId()) ?>">
+                    <option value="">
+                        <?= $block->escapeHtml(__('Choose an Option...')) ?>
+                    </option>
+                </select>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif;?>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_Checkout::checkout_settings" title="One Step Checkout" translate="title" module="Amasty_Checkout" sortOrder="100" parent="Magento_Backend::system" resource="Amasty_Checkout::checkout_settings"/>
+        <add id="Amasty_Checkout::checkout_settings_fields" title="Manage Checkout Fields" translate="title" module="Amasty_Checkout" sortOrder="10" parent="Amasty_Checkout::checkout_settings" action="amasty_checkout/field" resource="Amasty_Checkout::checkout_settings_fields"/>
+        <add id="Amasty_Checkout::reports" title="Checkout Analytics" translate="title" module="Amasty_Checkout" sortOrder="1" parent="Magento_Reports::report_marketing" action="amasty_checkout/reports/" resource="Amasty_Checkout::reports"/>
+    </menu>
+</config>

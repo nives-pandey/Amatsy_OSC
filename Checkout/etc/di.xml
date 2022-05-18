@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="\Amasty\Checkout\Api\GiftMessageInformationManagementInterface" type="Amasty\Checkout\Model\GiftMessageInformationManagement" />
+    <preference for="\Amasty\Checkout\Api\GuestGiftMessageInformationManagementInterface" type="Amasty\Checkout\Model\GuestGiftMessageInformationManagement" />
+
+    <preference for="\Amasty\Checkout\Api\FeeRepositoryInterface" type="Amasty\Checkout\Model\FeeRepository" />
+    <preference for="\Amasty\Checkout\Api\GiftWrapInformationManagementInterface" type="Amasty\Checkout\Model\GiftWrapInformationManagement" />
+    <preference for="\Amasty\Checkout\Api\GuestGiftWrapInformationManagementInterface" type="Amasty\Checkout\Model\GuestGiftWrapInformationManagement" />
+
+    <preference for="\Amasty\Checkout\Api\DeliveryInformationManagementInterface" type="Amasty\Checkout\Model\DeliveryInformationManagement" />
+    <preference for="\Amasty\Checkout\Api\GuestDeliveryInformationManagementInterface" type="Amasty\Checkout\Model\GuestDeliveryInformationManagement" />
+
+    <preference for="\Amasty\Checkout\Api\ItemManagementInterface" type="Amasty\Checkout\Model\ItemManagement" />
+    <preference for="\Amasty\Checkout\Api\GuestItemManagementInterface" type="Amasty\Checkout\Model\GuestItemManagement" />
+
+    <preference for="Amasty\Checkout\Api\Data\AdditionalFieldsInterface" type="Amasty\Checkout\Model\AdditionalFields" />
+    <preference for="Amasty\Checkout\Api\AdditionalFieldsManagementInterface" type="Amasty\Checkout\Model\AdditionalFieldsManagement" />
+    <preference for="Amasty\Checkout\Api\GuestAdditionalFieldsManagementInterface" type="Amasty\Checkout\Model\GuestAdditionalFieldsManagement" />
+
+    <preference for="Amasty\Checkout\Api\AccountManagementInterface" type="Amasty\Checkout\Model\AccountManagement" />
+
+    <preference for="Amasty\Checkout\Api\Data\QuoteCustomFieldsInterface" type="Amasty\Checkout\Model\QuoteCustomFields" />
+    <preference for="Amasty\Checkout\Api\Data\OrderCustomFieldsInterface" type="Amasty\Checkout\Model\OrderCustomFields" />
+
+    <preference for="Amasty\Checkout\Api\Data\QuotePasswordsInterface" type="Amasty\Checkout\Model\QuotePasswords" />
+    <preference for="Amasty\Checkout\Api\QuotePasswordsRepositoryInterface" type="Amasty\Checkout\Model\QuotePasswordsRepository" />
+
+    <preference for="Amasty\Checkout\Api\GuestQuoteManagementInterface" type="Amasty\Checkout\Model\GuestQuoteManagement" />
+    <preference for="Amasty\Checkout\Api\QuoteManagementInterface" type="Amasty\Checkout\Model\QuoteManagement" />
+
+    <preference for="Amasty\Checkout\Api\MergeJsInterface" type="Amasty\Checkout\Model\Optimization\MergeFileRepository" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="quote_data_source" xsi:type="string">Amasty\Checkout\Model\ResourceModel\Quote\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Amasty\Checkout\Model\ResourceModel\Quote\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">quote</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Quote\Model\ResourceModel\Quote</argument>
+        </arguments>
+    </virtualType>
+<!--    API payments disabler START -->
+<!--    if payment disabled then do not request any API and do not output config. usage in frontend DI-->
+    <virtualType name="BraintreeGooglePayIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">Magento\Braintree\Model\GooglePay\Config</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">Magento\Braintree\Gateway\Config\Config</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeApplePayIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">Magento\Braintree\Model\ApplePay\Config</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeVenmoIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">BraintreeVenmoConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeVenmoConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">braintree_venmo</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeAchIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">BraintreeAchConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BraintreeAchConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">braintree_ach_direct_debit</argument>
+        </arguments>
+    </virtualType>
+<!--PayPal Braintree-->
+    <virtualType name="PPBraintreeGooglePayIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">Paypal\Braintree\Model\GooglePay\Config</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PPBraintreeIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">PayPal\Braintree\Gateway\Config\Config</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PPBraintreeApplePayIsActivePlugin" type="Amasty\Checkout\Plugin\Braintree\Model\AbstractConfigProviderPlugin">
+        <arguments>
+            <argument name="paymentConfig" xsi:type="object">Paypal\Braintree\Model\ApplePay\Config</argument>
+        </arguments>
+    </virtualType>
+<!--    API payments disabler FINISH -->
+    <type name="Magento\Quote\Model\Cart\CartTotalRepository">
+        <plugin name="Amasty_Checkout::CartTotalRepository" type="Amasty\Checkout\Plugin\Quote\Model\Cart\CartTotalRepository" />
+    </type>
+    <type name="Magento\Framework\Api\DataObjectHelper">
+        <plugin name="Amasty_Checkout::DataObjectHelper" type="Amasty\Checkout\Plugin\Framework\Api\DataObjectHelperPlugin"/>
+    </type>
+    <type name="Magento\Payment\Model\Info">
+        <plugin name="Amasty_Checkout::PaymentModelInfo" type="Amasty\Checkout\Plugin\Payment\Model\Info" />
+    </type>
+    <type name="Magento\Payment\Helper\Data">
+        <plugin name="Amasty_Checkout::PaymentHelperData" type="Amasty\Checkout\Plugin\Payment\Helper\Data" />
+    </type>
+    <type name="Magento\Sales\Block\Items\AbstractItems">
+        <plugin name="Amasty_Checkout::OrderInfo" type="Amasty\Checkout\Plugin\Order\Delivery" />
+    </type>
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="Amasty_Checkout::Model_Quote" type="Amasty\Checkout\Plugin\Model\QuotePlugin"/>
+    </type>
+    <type name="Amasty\Checkout\Block\Adminhtml\System\Config\OrderAttributes">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="module_manager" xsi:type="object">Magento\Framework\Module\Manager</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Checkout\Plugin\LayoutProcessor">
+        <arguments>
+            <argument name="onepageHelper" xsi:type="object">Amasty\Checkout\Helper\Onepage\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Checkout\Setup\UpgradeData">
+        <arguments>
+            <argument name="upgradeDataTo203" xsi:type="object">Amasty\Checkout\Setup\Operation\UpgradeDataTo203\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Checkout\Model\Subscription">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Checkout\Model\FieldsDefaultProvider">
+        <arguments>
+            <argument name="geolocation" xsi:type="object">Amasty\Geoip\Model\Geolocation\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Gdpr\Model\Source\CheckboxLocationCombine">
+        <arguments>
+            <argument name="optionGroups" xsi:type="array">
+                <item name="amasty" xsi:type="array">
+                    <item name="optionSources" xsi:type="array">
+                        <item name="amasty_osc_gdpr" xsi:type="object">Amasty\Checkout\Model\Config\Source\Gdpr\CheckboxLocation</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option">
+        <plugin name="Amasty_Checkout::Bundle_Option" type="Amasty\Checkout\Plugin\Block\Catalog\Product\View\Type\Bundle\OptionPlugin"/>
+    </type>
+    <type name="Magento\Checkout\CustomerData\DirectoryData">
+        <plugin name="Amasty_Checkout::DirectoryDataCache" type="Amasty\Checkout\Plugin\Checkout\CustomerData\DirectoryDataPlugin"/>
+    </type>
+    <type name="Magento\Quote\Api\Data\AddressInterface">
+        <plugin name="Amasty_Checkout::FixExtensionAttributesType" type="Amasty\Checkout\Plugin\Quote\AddressInterfacePlugin"/>
+    </type>
+    <type name="Magento\Checkout\Block\Onepage">
+        <plugin sortOrder="40" name="Amasty_Checkout::InitializeQuote" type="Amasty\Checkout\Plugin\Checkout\Block\OnepagePlugin"/>
+    </type>
+    <type name="Magento\AdvancedSalesRule\Model\Rule\Condition\FilterTextGenerator\Address\PaymentMethod">
+        <plugin name="Amasty_Checkout::FixAdvancedSalesRules" type="Amasty\Checkout\Plugin\AdvancedSalesRule\Model\Rule\Condition\FilterTextGenerator\Address\PaymentMethodPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteRepository\SaveHandler">
+        <plugin name="Amasty_Checkout::saveCustomAddressFields" type="Amasty\Checkout\Plugin\Quote\Model\QuoteRepository\SaveHandlerPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\CustomAttributeListInterface">
+        <plugin name="Amasty_Checkout::registerCustomAttributes" type="Amasty\Checkout\Plugin\Quote\Model\Quote\Address\CustomAttributeListPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteRepository\LoadHandler">
+        <plugin name="Amasty_Checkout::loadAddressAttributeValues" type="Amasty\Checkout\Plugin\Quote\Model\QuoteRepository\LoadHandlerPlugin"/>
+    </type>
+
+    <type name="Amasty\Gdpr\Model\Consent\DataProvider\CheckoutDataProvider">
+        <plugin name="Amasty_Checkout::skipCountryRestriction" type="Amasty\Checkout\Plugin\Gdpr\Model\Consent\DataProvider\SkipCountryRestriction"/>
+    </type>
+</config>

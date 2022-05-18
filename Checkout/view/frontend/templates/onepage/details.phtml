@@ -1,0 +1,32 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var $block Amasty\Checkout\Block\Onepage\Success\Details */ ?>
+<div class="account">
+    <div class="column main">
+        <div class="block block-order-details">
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__('Order number: ')) ?><?= /* @noEscape */$block->getOrderId() ?></strong>
+            </div>
+            <div class="order-date">
+                <strong><?= $block->escapeHtml(__('Order date: ')) ?></strong>
+                <?= $block->escapeHtml(
+                    $block->formatDate(
+                        $block->getOrder()->getCreatedAt(),
+                        \IntlDateFormatter::LONG
+                    )
+                ) ?>
+                <?= $block->getChildHtml('delivery') ?>
+                <span class="delivery-date"><?= $block->escapeHtml($block->getDeliveryInfo()) ?></span>
+            </div>
+        </div>
+
+        <?= $block->getChildHtml('info') ?>
+        <?= $block->getChildHtml('comments') ?>
+        <?= $block->getChildHtml('order_view') ?>
+    </div>
+</div>

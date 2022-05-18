@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block cacheable="false">
+            <block class="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable" template="Amasty_Checkout::product/view/type/options/configurable.phtml" name="amcheckout.super.prototype" cacheable="false" />
+            <block class="Magento\Downloadable\Block\Checkout\Cart\Item\Renderer" template="Amasty_Checkout::product/view/type/options/downloadable.phtml" name="amcheckout.downloadable.prototype" cacheable="false" />
+            <block class="Amasty\Checkout\Block\Catalog\Product\View\Type\BundleOverride" name="amcheckout.bundle.prototype" template="Amasty_Checkout::product/view/type/options/bundle.phtml" cacheable="false">
+                <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Select" name="product.info.bundle.options.select" as="select"/>
+                <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Multi" name="product.info.bundle.options.multi" as="multi"/>
+                <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Radio" name="product.info.bundle.options.radio" as="radio"/>
+                <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Checkbox" name="product.info.bundle.options.checkbox" as="checkbox"/>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View\Options" name="amcheckout.options.prototype" as="options_prototype" template="Amasty_Checkout::product/view/options.phtml">
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\DefaultType" as="default" template="Magento_Catalog::product/view/options/type/default.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Text" as="text" template="Magento_Catalog::product/view/options/type/text.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\File" as="file" template="Magento_Catalog::product/view/options/type/file.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Select" as="select" template="Magento_Catalog::product/view/options/type/select.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Date" as="date" template="Magento_Catalog::product/view/options/type/date.phtml"/>
+            </block>
+        </block>
+    </body>
+</page>

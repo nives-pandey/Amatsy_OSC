@@ -1,0 +1,16 @@
+<div class="admin__field admin__field-option am-gift-message"
+     data-bind="css: { checked: getChild('checkbox').checked }">
+    <!-- ko with: getChild('checkbox') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+
+    <div class="popup" id="amcheckout-gift-messages" data-bind="visible: isFormPopUpVisible()">
+        <!-- ko with: getChild('item_messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+        <!-- ko with: getChild('quote_message') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+</div>

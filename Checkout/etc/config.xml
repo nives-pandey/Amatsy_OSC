@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_checkout>
+            <general>
+                <enabled>1</enabled>
+                <title>Checkout</title>
+                <description>Please enter your details below to complete your purchase</description>
+                <bundling>1</bundling>
+                <!-- hidden for OSC-128-->
+                <!--subscribe_authorization>1</subscribe_authorization-->
+            </general>
+            <design>
+                <checkout_design>1</checkout_design>
+                <layout_modern>3columns</layout_modern>
+                <header_footer>0</header_footer>
+                <place_button_layout>summary</place_button_layout>
+            </design>
+            <additional_options>
+                <discount>1</discount>
+            </additional_options>
+            <custom_blocks>
+                <top_block_id></top_block_id>
+                <bottom_block_id></bottom_block_id>
+            </custom_blocks>
+            <delivery_date>
+                <delivery_comment_enable>1</delivery_comment_enable>
+                <delivery_comment_default></delivery_comment_default>
+            </delivery_date>
+            <manage_fields_link>
+                <label>Also see Layout settings to manage Block Names</label>
+            </manage_fields_link>
+            <manage_fields_link_content>
+                <label>Also see Manage Checkout Fields to rearrange Address Block content</label>
+            </manage_fields_link_content>
+            <manage_fields_link_gift_wrap>
+                <label>Please click here to continue</label>
+            </manage_fields_link_gift_wrap>
+        </amasty_checkout>
+    </default>
+</config>

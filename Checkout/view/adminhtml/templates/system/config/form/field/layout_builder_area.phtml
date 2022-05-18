@@ -1,0 +1,36 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/** @var Amasty\Checkout\Block\Config\LayoutBuilderArea $block */
+$element = $block->getElement();
+?>
+
+<input type="hidden"
+       id="amcheckout-presets"
+       name="<?= /* @noEscape */ $element->getName() ?>"
+       value="<?= /* @noEscape */ $element->getEscapedValue() ?>" />
+
+<div id="ambuilder-main-container" class="ambuilder-main-container"></div>
+
+<script>
+    require([
+        'amLayoutBuilder',
+        'amUseDefaultStateManager'
+    ], function (LayoutBuilder, useDefaultStateManager) {
+        var React = LayoutBuilder.init('ambuilder-main-container', {
+            defaultBlockTitles: <?= \Zend_Json::encode($block->getBlockDefaultNames())?>,
+            staticTitle: "<?= $block->escapeHtml(__('Static Block')) ?>",
+            dragIconTitle: "<?= $block->escapeHtml(__('Drag Icon')) ?>"
+        });
+
+        // If checkout design use default checkbox exists
+        if (document.getElementById('amasty_checkout_design_layout_checkout_design_inherit')) {
+            useDefaultStateManager.init(<?= \Zend_Json::encode($block->getConfigForUseDefault())?>);
+        }
+    });
+</script>

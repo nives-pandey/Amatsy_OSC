@@ -1,0 +1,223 @@
+.store-switcher {
+    float: none;
+}
+
+#edit_form {
+    table {
+        margin-bottom: 12px;
+
+        thead td {
+            font-weight: bold;
+        }
+
+        td {
+            padding: 7px 16px;
+            vertical-align: top;
+
+            input {
+                box-sizing: border-box;
+                padding: 1px 4px;
+            }
+        }
+
+        tbody {
+            tr:nth-child(2n+1) td {
+                background-color: #f5f5f5;
+            }
+
+            tr:nth-child(2n) td {
+                background-color: white;
+            }
+
+            td {
+                border-right: .1rem dashed #d6d6d6;
+                border-left: .1rem dashed #d6d6d6;
+
+                &:last-child {
+                    border-right: none;
+                }
+
+                &:first-child {
+                    border-left: none;
+                }
+            }
+
+            .placeholder td {
+                border: 1px dashed #ccc;
+                text-align: center;
+            }
+
+            .placeholder {
+                display: none;
+            }
+
+            .placeholder:only-child {
+                display: table-row;
+            }
+        }
+
+        td:first-child {
+            vertical-align: middle;
+        }
+
+        td {
+            &.center {
+                text-align: center;
+            }
+
+            &.middle {
+                vertical-align: middle;
+            }
+
+            &.default-value,
+            &.required {
+                width: 100px;
+            }
+        }
+
+        .draggable-handle {
+            margin: 0;
+            width: 8px;
+            height: 14px;
+            background: url(../../Magento_Backend/images/draggable-handle-vertical.png) no-repeat 0 0;
+            color: #b2b0ad;
+            vertical-align: top;
+            line-height: 14px;
+            cursor: ns-resize;
+        }
+    }
+
+    .width-control {
+        input {
+            display: inline-block;
+            width: 40px;
+        }
+
+        .ui-slider {
+            display: inline-block;
+            margin-right: 12px;
+            width: 50px;
+        }
+
+        &.-empty * {
+            display: none;
+        }
+    }
+}
+
+.fields-comment {
+    margin: 12px 0 7px;
+}
+
+.amcheckout-fields-wrapper {
+    display: none;
+}
+
+.amcheckout-custom-fields .modal-inner-wrap {
+    & {
+        width: 400px;
+    }
+
+    .amcheckout-fields-wrapper {
+        display: block;
+    }
+
+    .amcheckout-note {
+        margin-top: 15px;
+    }
+
+    .amcheckout-button {
+        margin-top: 10px;
+    }
+}
+
+.amcheckout-field-wrapper {
+    & {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .amcheckout-checkbox {
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+}
+
+.amcheckout-module-link {
+    & {
+        background: none !important;
+        vertical-align: middle !important;
+    }
+
+    .amcheckout-link {
+        position: relative;
+        z-index: 2;
+        box-sizing: border-box;
+        margin-left: 15px;
+        padding: 5px 40px 5px 5px;
+        background: #ea5300;
+        color: #fff;
+        white-space: nowrap;
+    }
+
+    .amcheckout-link:before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: -1;
+        border: 10px solid #ea5300;
+        content: '';
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .amcheckout-link:after {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 10px;
+        height: 10px;
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODMuOTIyIDI4My45MjIiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48cGF0aCBkPSJNMjY2LjQyMiAwaC05Ny42MjVjLTkuNjUgMC0xNy41IDcuODUxLTE3LjUgMTcuNSAwIDkuNjQ5IDcuODUgMTcuNSAxNy41IDE3LjVoNTUuMzc3bC05Mi4zNzUgOTIuMzc0YTE3LjM3OCAxNy4zNzggMCAwIDAtNS4xMjcgMTIuMzc1YzAgNC42NzYgMS44MTkgOS4wNjkgNS4xMjUgMTIuMzcxYTE3LjM3NCAxNy4zNzQgMCAwIDAgMTIuMzc1IDUuMTNjNC42NzQgMCA5LjA2OS0xLjgyIDEyLjM3Ni01LjEyN2w5Mi4zNzQtOTIuMzc1djU1LjM3N2MwIDkuNjQ5IDcuODUxIDE3LjUgMTcuNSAxNy41IDkuNjQ5IDAgMTcuNS03Ljg1MSAxNy41LTE3LjVWMTcuNWMwLTkuNjQ5LTcuODUxLTE3LjUtMTcuNS0xNy41eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBkYXRhLW9sZF9jb2xvcj0iI2ZmZiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0yMDEuMTM3IDI1My45MjJIMzBWODIuNzg1aDEyOC43MTFsMzAtMzBIMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTV2MjAxLjEzN2MwIDguMjg0IDYuNzE2IDE1IDE1IDE1aDIwMS4xMzdjOC4yODQgMCAxNS02LjcxNiAxNS0xNVY5NS4yMTFsLTMwIDMwdjEyOC43MTF6IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBjbGFzcz0iYWN0aXZlLXBhdGgiIGRhdGEtb2xkX2NvbG9yPSIjZmZmIiBmaWxsPSIjZmZmIi8+PC9zdmc+) no-repeat center;
+        background-size: contain;
+        content: '';
+        transform: translate(-50%, -50%);
+    }
+
+    .amcheckout-label {
+        z-index: 2;
+    }
+}
+
+.amasty-module-status {
+    td {
+        border: none !important;
+        background: none !important;
+    }
+
+    .name-wrapper {
+        text-align: right;
+    }
+
+    .module-name {
+        font-weight: 600;
+    }
+
+    .note {
+        font-size: 12px;
+    }
+}
+
+.unsortable {
+    .amcheckout-required-option,
+    .amcheckout-default-option {
+        pointer-events: none;
+    }
+
+    .amcheckout-required-option .amcheckout-checkbox,
+    .amcheckout-default-option .amcheckout-default-checkbox {
+        display: none;
+    }
+
+    .draggable-handle {
+        opacity: .2;
+    }
+}

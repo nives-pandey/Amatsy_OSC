@@ -1,0 +1,42 @@
+<!-- ko fastForEach: getRegion('authentication') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko fastForEach: getRegion('estimation') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko fastForEach: getRegion('messages') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<div data-bind="{
+        css: getOneStepModel().containerClassNames,
+        attr: getOneStepModel().getContainerAttrs()
+    }">
+<!-- ko foreach:  { data: getOneStepModel().selectedLayout, as: 'column' }-->
+    <div data-bind="{
+            css: $parents[0].getOneStepModel().getColumnClassNames($index()),
+            attr: $parents[0].getOneStepModel().getColumnAttrs($index())
+        }">
+    <!-- ko foreach:  { data: column, as: 'block'}-->
+        <!-- ko if: $parents[1].getOneStepModel().getCheckoutBlock(block.name) -->
+        <div data-bind="{
+                css: $parents[1].getOneStepModel().getBlockClassNames(block.name),
+                attr: $parents[1].getOneStepModel().getBlockAttrs()
+            }">
+            <!-- ko with: $parents[1].getOneStepModel().getCheckoutBlock(block.name) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+            <!-- ko if: $parents[1].gdprTml -->
+                <!-- ko template: $parents[1].gdprTml--><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <!--/ko-->
+    <!--/ko-->
+    </div>
+<!--/ko-->
+<!-- ko if: getOneStepModel().isModernTwoColumns() -->
+    <div style="clear: both"></div>
+<!--/ko-->
+</div>

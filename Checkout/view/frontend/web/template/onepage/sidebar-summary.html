@@ -1,0 +1,26 @@
+<!-- ko foreach: getRegion('summary') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko if: (hasChild('additional')) -->
+<div class="amcheckout-additional-options additional-options">
+    <!-- ko with: getChild('additional') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div class="amcheckout-clear"></div>
+</div>
+<!--/ko-->
+
+<!-- ko foreach: getRegion('summary_additional') -->
+<div class="checkout-payment-method">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<!--/ko-->
+
+<!-- ko if: (hasChild('place-button')) -->
+<!-- ko with: getChild('place-button') -->
+<div class="checkout-payment-method submit">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<!--/ko-->
+<!--/ko-->

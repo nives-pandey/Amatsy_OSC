@@ -1,0 +1,15 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var \Amasty\Checkout\Block\Adminhtml\System\Config\Expander $block **/ ?>
+<script type="text/javascript">
+    //<![CDATA[
+    require(['Amasty_Checkout/js/fieldset-expander'], function (expander) {
+        expander.init('<?=$block->escapeHtml($block->getSection())?>','<?=$block->escapeHtml($block->getExpand())?>');
+    });
+    //]]>
+</script>

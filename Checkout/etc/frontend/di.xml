@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="addressFormAttributes" xsi:type="object">Amasty\Checkout\Cache\CachedLayoutProcessor\AddressFormAttributes</item>
+                <item name="directoryData" xsi:type="object">Amasty\Checkout\CachedLayoutProcessor\DirectoryData</item>
+                <item name="amastyCheckout" sortOrder="100" xsi:type="object">Amasty\Checkout\CachedLayoutProcessor\AmastyCheckout</item>
+                <item name="amastyCheckoutCustomer" sortOrder="101" xsi:type="object">Amasty\Checkout\Block\Onepage\CustomerProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+<!--    Checkout Cache with wrapper. START -->
+    <type name="Amasty\Checkout\Cache\CachedLayoutProcessor\AddressFormAttributes">
+        <arguments>
+            <argument name="processorClass" xsi:type="string">Magento\Checkout\Block\Checkout\LayoutProcessor</argument>
+            <argument name="attributeValueUpdate" xsi:type="object">Amasty\Checkout\Cache\CachedLayoutProcessor\AddressFormAttributes\DefaultAttributeValueUpdate\Proxy</argument>
+            <argument name="cacheVariators" xsi:type="array">
+                <item name="store_id" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\StoreId</item>
+                <item name="is_logged" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\IsLoggedIn</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Amasty\Checkout\CachedLayoutProcessor\AmastyCheckout" type="Amasty\Checkout\Cache\Wrappers\LayoutProcessorCacheWrapper">
+        <arguments>
+            <argument name="processorClass" xsi:type="string">Amasty\Checkout\Block\Onepage\LayoutProcessor</argument>
+            <argument name="cacheVariators" xsi:type="array">
+                <item name="store_id" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\StoreId</item>
+                <item name="is_logged" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\IsLoggedIn</item>
+                <item name="is_quote_virtual" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\IsVirtual</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\Checkout\CachedLayoutProcessor\DirectoryData" type="Amasty\Checkout\Cache\Wrappers\LayoutProcessorCacheWrapper">
+        <arguments>
+            <argument name="processorClass" xsi:type="string">Magento\Checkout\Block\Checkout\DirectoryDataProcessor</argument>
+            <argument name="cacheVariators" xsi:type="array">
+                <item name="store_id" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\StoreId</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\Checkout\CachedConfigProvider\AmastyCheckout" type="Amasty\Checkout\Cache\Wrappers\ConfigProviderCacheWrapper">
+        <arguments>
+            <argument name="originalClass" xsi:type="string">Amasty\Checkout\Model\ConfigProvider</argument>
+            <argument name="cacheVariators" xsi:type="array">
+                <item name="store_id" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\StoreId</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\Checkout\CachedConfigProvider\AmastyCheckoutGdpr" type="Amasty\Checkout\Cache\Wrappers\ConfigProviderCacheWrapper">
+        <arguments>
+            <argument name="originalClass" xsi:type="string">Amasty\Checkout\Model\CheckoutConfigProvider\Gdpr</argument>
+            <argument name="cacheVariators" xsi:type="array">
+                <item name="store_id" xsi:type="object">Amasty\Checkout\Cache\ConditionVariator\StoreId</item>
+            </argument>
+        </arguments>
+    </virtualType>
+<!--    Checkout Cache with wrapper. FINISH -->
+<!--    API payments disabler START -->
+<!--    if payment disabled then do not request any API and do not output config-->
+    <type name="Magento\Braintree\Model\GooglePay\Ui\ConfigProvider">
+        <plugin name="BraintreeGooglePayIsActivePlugin" type="BraintreeGooglePayIsActivePlugin"/>
+    </type>
+    <type name="PayPal\Braintree\Model\GooglePay\Ui\ConfigProvider">
+        <plugin name="BraintreeGooglePayIsActivePlugin" type="PPBraintreeGooglePayIsActivePlugin"/>
+    </type>
+    <type name="Magento\Braintree\Model\Ui\ConfigProvider">
+        <plugin name="BraintreeIsActivePlugin" type="BraintreeIsActivePlugin"/>
+    </type>
+    <type name="PayPal\Braintree\Model\Ui\ConfigProvider">
+        <plugin name="BraintreeIsActivePlugin" type="PPBraintreeIsActivePlugin"/>
+    </type>
+    <type name="Magento\Braintree\Model\ApplePay\Ui\ConfigProvider">
+        <plugin name="BraintreeApplePayIsActivePlugin" type="BraintreeApplePayIsActivePlugin"/>
+    </type>
+    <type name="PayPal\Braintree\Model\ApplePay\Ui\ConfigProvider">
+        <plugin name="BraintreeApplePayIsActivePlugin" type="PPBraintreeApplePayIsActivePlugin"/>
+    </type>
+    <type name="Magento\Braintree\Model\Venmo\Ui\ConfigProvider">
+        <plugin name="BraintreeVenmoIsActivePlugin" type="BraintreeVenmoIsActivePlugin"/>
+    </type>
+    <type name="PayPal\Braintree\Model\Venmo\Ui\ConfigProvider">
+        <plugin name="BraintreeVenmoIsActivePlugin" type="BraintreeVenmoIsActivePlugin"/>
+    </type>
+    <type name="Magento\Braintree\Model\Ach\Ui\ConfigProvider">
+        <plugin name="BraintreeAchIsActivePlugin" type="BraintreeAchIsActivePlugin"/>
+    </type>
+    <type name="PayPal\Braintree\Model\Ach\Ui\ConfigProvider">
+        <plugin name="BraintreeAchIsActivePlugin" type="BraintreeAchIsActivePlugin"/>
+    </type>
+    <!--    API payments disabler FINISH -->
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="Amasty_Checkout::AttributeMerger" type="Amasty\Checkout\Plugin\AttributeMerger" />
+    </type>
+    <type name="\Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="Amasty_Checkout::LayoutProcessor" type="Amasty\Checkout\Plugin\LayoutProcessor" />
+    </type>
+
+    <type name="\Magento\Checkout\Block\Cart\LayoutProcessor">
+        <plugin name="Amasty_Checkout::CartLayoutProcessor" type="Amasty\Checkout\Plugin\CartLayoutProcessor" />
+    </type>
+
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="Amasty_Checkout::DefaultConfigProvider" type="Amasty\Checkout\Plugin\DefaultConfigProvider" />
+    </type>
+
+    <type name="Magento\Checkout\Controller\Onepage\Success">
+        <plugin name="Amasty_Checkout::SuccessPlugin" type="Amasty\Checkout\Plugin\Controller\Onepage\SuccessPlugin" />
+    </type>
+
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="Amasty_Checkout::DisableJsMixins" type="Amasty\Checkout\Plugin\View\Page\Config\Renderer" />
+    </type>
+    <type name="Magento\RequireJs\Model\FileManager">
+        <plugin name="Amasty_Checkout::merge-js" type="Amasty\Checkout\Plugin\RequireJs\Model\FileManagerPlugin"/>
+    </type>
+    <type name="Magento\Framework\View\Asset\ConfigInterface">
+        <plugin name="amastyCheckoutConfigInterface" type="Amasty\Checkout\Plugin\Framework\View\Asset\ConfigInterfacePlugin"/>
+    </type>
+
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="amasty_checkout" xsi:type="object">Amasty\Checkout\CachedConfigProvider\AmastyCheckout</item>
+                <item name="amasty_checkout_gdpr" xsi:type="object">Amasty\Checkout\CachedConfigProvider\AmastyCheckoutGdpr</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

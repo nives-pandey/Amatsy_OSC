@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layout Builder</title>
+</head>
+<body>
+    <div id="design_block">
+        <select id="amasty_checkout_design_layout_checkout_design">
+            <option value="0">Classic</option>
+            <option value="1" selected="selected">Modern</option>
+        </select>
+    </div>
+    <div id="modern_layout_block">
+        <select id="amasty_checkout_design_layout_layout_modern">
+            <option value="1column">1 Column</option>
+            <option value="2columns" selected="selected">2 Columns (1 Column with a Fixed Order Summary Sidebar)</option>
+            <option value="3columns">3 Columns</option>
+        </select>
+    </div>
+    <div id="classic_layout_block" style="display: none">
+        <select id="amasty_checkout_design_layout_layout">
+            <option value="2columns">2 Columns</option>
+            <option value="3columns" selected="selected">3 Columns</option>
+        </select>
+    </div>
+    <div style="margin-top: 30px">
+        <span>Builder Frontend Config</span>
+        <input id="amasty_checkout_design_layout_frontend_layout_config_inherit"  type="checkbox" value="1" />
+        <label for="amasty_checkout_design_layout_frontend_layout_config_inherit">Use default/website</label>
+    </div>
+
+    <!-- Stringified JSON test data for development -->
+    <input type="hidden" id="amcheckout-presets" value="{&quot;classic&quot;:{&quot;2columns&quot;:{&quot;frontendColumns&quot;:2,&quot;columnsWidth&quot;:[1,1],&quot;axis&quot;:&quot;both&quot;,&quot;cols&quot;:2,&quot;layout&quot;:[{&quot;i&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;,&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;,&quot;x&quot;:0,&quot;y&quot;:1,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;,&quot;x&quot;:0,&quot;y&quot;:2,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;,&quot;x&quot;:1,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;,&quot;x&quot;:1,&quot;y&quot;:1,&quot;w&quot;:1,&quot;h&quot;:1}]},&quot;3columns&quot;:{&quot;frontendColumns&quot;:3,&quot;columnsWidth&quot;:[1,1,1],&quot;axis&quot;:&quot;both&quot;,&quot;cols&quot;:3,&quot;layout&quot;:[{&quot;i&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;,&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;,&quot;x&quot;:1,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;,&quot;x&quot;:1,&quot;y&quot;:2,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;,&quot;x&quot;:1,&quot;y&quot;:3,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;,&quot;x&quot;:2,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1}]}},&quot;modern&quot;:{&quot;1column&quot;:{&quot;frontendColumns&quot;:1,&quot;columnsWidth&quot;:[1],&quot;axis&quot;:&quot;both&quot;,&quot;cols&quot;:1,&quot;layout&quot;:[{&quot;i&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;,&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;,&quot;x&quot;:0,&quot;y&quot;:1,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;,&quot;x&quot;:0,&quot;y&quot;:2,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;,&quot;x&quot;:0,&quot;y&quot;:3,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;,&quot;x&quot;:0,&quot;y&quot;:4,&quot;w&quot;:1,&quot;h&quot;:1}]},&quot;2columns&quot;:{&quot;frontendColumns&quot;:2,&quot;columnsWidth&quot;:[2,1],&quot;axis&quot;:&quot;y&quot;,&quot;cols&quot;:3,&quot;layout&quot;:[{&quot;i&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;,&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:2,&quot;h&quot;:1},{&quot;i&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;,&quot;x&quot;:0,&quot;y&quot;:1,&quot;w&quot;:2,&quot;h&quot;:1},{&quot;i&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;,&quot;x&quot;:0,&quot;y&quot;:2,&quot;w&quot;:2,&quot;h&quot;:1},{&quot;i&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;,&quot;x&quot;:0,&quot;y&quot;:3,&quot;w&quot;:2,&quot;h&quot;:1},{&quot;i&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;,&quot;x&quot;:2,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1,&quot;static&quot;:true,&quot;axis&quot;:&quot;x&quot;}]},&quot;3columns&quot;:{&quot;frontendColumns&quot;:3,&quot;columnsWidth&quot;:[1,1,1],&quot;axis&quot;:&quot;both&quot;,&quot;cols&quot;:3,&quot;layout&quot;:[{&quot;i&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;,&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;,&quot;x&quot;:1,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;,&quot;x&quot;:1,&quot;y&quot;:2,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;,&quot;x&quot;:1,&quot;y&quot;:3,&quot;w&quot;:1,&quot;h&quot;:1},{&quot;i&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;,&quot;x&quot;:2,&quot;y&quot;:0,&quot;w&quot;:1,&quot;h&quot;:1}]}}}">
+    <input type="hidden" id="amcheckout-frontend-config" value="[[{&quot;name&quot;:&quot;shipping_method&quot;,&quot;title&quot;:&quot;Shipping Method&quot;},{&quot;name&quot;:&quot;shipping_address&quot;,&quot;title&quot;:&quot;Shipping Address&quot;},{&quot;name&quot;:&quot;delivery&quot;,&quot;title&quot;:&quot;Delivery&quot;},{&quot;name&quot;:&quot;payment_method&quot;,&quot;title&quot;:&quot;Payment Method&quot;}],[{&quot;name&quot;:&quot;summary&quot;,&quot;title&quot;:&quot;Order Summary&quot;}]]">
+    <script>
+        document
+            .getElementById('amasty_checkout_design_layout_checkout_design')
+            .addEventListener('change', function (event) {
+                if (+event.target.value === 0) {
+                    document.getElementById('modern_layout_block').style.display = 'none';
+                    document.getElementById('classic_layout_block').style.display = 'block';
+                } else {
+                    document.getElementById('modern_layout_block').style.display = 'block';
+                    document.getElementById('classic_layout_block').style.display = 'none';
+                }
+            });
+    </script>
+
+    <div id="ambuilder-main-container" class="ambuilder-main-container"></div>
+</body>
+</html>

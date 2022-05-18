@@ -1,0 +1,131 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+// @codingStandardsIgnoreFile
+// copied from vendor/magento/module-config/view/adminhtml/templates/system/config/js.phtml
+?>
+<script>
+require([
+    'prototype'
+], function () {
+
+var originModel = Class.create();
+originModel.prototype = {
+    initialize : function()
+    {
+        this.reload = false;
+        this.loader = new varienLoader(true);
+        this.regionsUrl = "<?= $block->escapeHtml($block->getUrl('directory/json/countryRegion')) ?>";
+
+        this.bindCountryRegionRelation();
+    },
+    bindCountryRegionRelation : function(parentId)
+    {
+        if (parentId) {
+            // todo: fix bug in IE
+            var countryElements = $$('#'+parentId+' .amjscountries');
+        } else {
+            var countryElements = $$('.amjscountries');
+        }
+        for(var i=0; i<countryElements.size(); i++) {
+            Event.observe(countryElements[i], 'change', this.reloadRegionField.bind(this));
+            this.initRegionField(countryElements[i]);
+            if ($(countryElements[i].id+'_inherit')) {
+                Event.observe($(countryElements[i].id+'_inherit'), 'change', this.enableRegionZip.bind(this));
+            }
+        }
+    },
+    enableRegionZip : function(event)
+    {
+        this.reload = true;
+        var countryElement = Event.element(event);
+        if (countryElement && countryElement.id && !countryElement.checked) {
+            var regionElement  = $(countryElement.id.replace(/country_id/, 'region_id'));
+            var zipElement  = $(countryElement.id.replace(/country_id/, 'postcode'));
+            if (regionElement && regionElement.checked) {
+                regionElement.click();
+            }
+            if (zipElement && zipElement.checked) {
+                zipElement.click();
+            }
+        }
+    },
+    initRegionField : function(element)
+    {
+        var countryElement = element;
+        if (countryElement && countryElement.id) {
+            var regionElement  = $(countryElement.id.replace(/country_id/, 'region_id'));
+            if (regionElement) {
+                this.regionElement = regionElement;
+                if (countryElement.value.length) {
+                    var url = this.regionsUrl+'parent/'+countryElement.value;
+                    this.loader.load(url, {}, this.refreshRegionField.bind(this));
+                } else {
+                    this.clearRegionField(this.regionElement.disabled);
+                }
+            }
+        }
+    },
+    reloadRegionField : function(event)
+    {
+        this.reload = true;
+        var countryElement = Event.element(event);
+        if (countryElement && countryElement.id) {
+            var regionElement  = $(countryElement.id.replace(/country_id/, 'region_id'));
+            if (regionElement) {
+                this.regionElement = regionElement;
+                if (countryElement.value.length) {
+                    var url = this.regionsUrl+'parent/'+countryElement.value;
+                    this.loader.load(url, {}, this.refreshRegionField.bind(this));
+                } else {
+                    this.clearRegionField(this.regionElement.disabled);
+                }
+            }
+        }
+    },
+    refreshRegionField : function(serverResponse)
+    {
+        if (serverResponse) {
+            var data = eval('(' + serverResponse + ')');
+            var value = this.regionElement.value;
+            var disabled = this.regionElement.disabled;
+            if (data.length) {
+                var html = '<select name="'+this.regionElement.name+'" id="'+this.regionElement.id+'" class="select" title="'+this.regionElement.title+'"'+(disabled?" disabled":"")+'>';
+                for (var i in data) {
+                    if (data[i].label) {
+                        html+= '<option value="'+data[i].value+'"';
+                        if (this.regionElement.value && (this.regionElement.value == data[i].value || this.regionElement.value == data[i].label)) {
+                            html+= ' selected';
+                        }
+                        html+='>'+data[i].label+'<\/option>';
+                    }
+                }
+                html+= '<\/select>';
+
+                var parentNode = this.regionElement.parentNode;
+                var regionElementId = this.regionElement.id;
+                parentNode.innerHTML = html;
+                this.regionElement = $(regionElementId);
+            } else if (this.reload) {
+                this.clearRegionField(disabled);
+            }
+        }
+    },
+    clearRegionField: function(disabled) {
+        var html = '<input type="text" name="' + this.regionElement.name + '" id="' + this.regionElement.id + '" class="input-text" title="' + this.regionElement.title + '"' + (disabled ? " disabled" : "") + '>';
+        var parentNode = this.regionElement.parentNode;
+        var regionElementId = this.regionElement.id;
+        parentNode.innerHTML = html;
+        this.regionElement = $(regionElementId);
+    }
+}
+
+originAddress = new originModel();
+
+});
+</script>

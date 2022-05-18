@@ -1,0 +1,15 @@
+<div class="payment-methods" data-bind="fadeVisible: visible">
+    <!-- ko if: warn() -->
+    <div role="alert" class="message warning" generated="true">
+        <span data-bind="text: warn"/>
+    </div>
+    <!-- /ko -->
+    <div class="actions-toolbar">
+        <button class="action primary checkout amasty"
+                type="submit"
+                data-bind="click: placeOrder, attr: {title: label}, css: {disabled: !isPlaceOrderActionAllowed()}"
+                data-role="review-save">
+            <span data-bind="text: label"></span>
+        </button>
+    </div>
+</div>

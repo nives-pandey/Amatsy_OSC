@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd" class="Amasty\Checkout\Component\Form">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">amasty_checkout_reports.quote_data_source</item>
+            <item name="deps" xsi:type="string">amasty_checkout_reports.quote_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Checkout Analytics</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">amasty_checkout_reports</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="refresh" xsi:type="string">Amasty\Checkout\Block\Adminhtml\Reports\RefreshButton</item>
+        </item>
+    </argument>
+    <dataSource name="quote_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Amasty\Checkout\Model\Reports\DataProvider</argument>
+            <argument name="name" xsi:type="string">quote_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">customer_group_id</argument>
+            <argument name="requestFieldName" xsi:type="string">group</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="quote_info">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+                <item name="template" xsi:type="string">Amasty_Checkout/reports/components/quote-info</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="imports" xsi:type="array">
+                    <item name="quoteTotalCount" xsi:type="string">${ $.provider }:data.quote_total_count</item>
+                    <item name="graphicInfo" xsi:type="string">${ $.provider }:data.graphic_info</item>
+                </item>
+            </item>
+        </argument>
+    </fieldset>
+    <fieldset name="shipping_address">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true"><![CDATA[Customer Information & Shipping Address]]></item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="shipping_address_fields">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Amasty_Checkout/reports/components/statistic</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="fields" xsi:type="string">${ $.provider }:data.shipping_address</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="billing_address">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Billing Address</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="billing_address_fields">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Amasty_Checkout/reports/components/statistic</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="fields" xsi:type="string">${ $.provider }:data.billing_address</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="shipping_method">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Shipping Method</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="shipping_method_fields">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Amasty_Checkout/reports/components/statistic</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="fields" xsi:type="string">${ $.provider }:data.shipping_method</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="delivery_date">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Delivery Date</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">50</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="delivery_date_fields">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Amasty_Checkout/reports/components/statistic</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="fields" xsi:type="string">${ $.provider }:data.delivery</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="payment_method">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Payment Method</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">60</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="payment_method_fields">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Amasty_Checkout/reports/components/statistic</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="fields" xsi:type="string">${ $.provider }:data.payment_method</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

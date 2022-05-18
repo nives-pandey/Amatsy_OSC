@@ -1,0 +1,339 @@
+"CHECKOUT FIELDS CONFIGURATION","CHECKOUT FIELDS CONFIGURATION"
+"Additional Options","Additional Options"
+"Customer Information","Customer Information"
+"Order Summary","Order Summary"
+"Payment Method","Payment Method"
+"Shipping Method","Shipping Method"
+"Store View:","Store View:"
+"Customer Group:","Customer Group:"
+Period:,Period:
+From:,From:
+To:,To:
+Today,Today
+"Last 7 days","Last 7 days"
+"Last 30 days","Last 30 days"
+Overall,Overall
+Custom,Custom
+"All Customer Groups","All Customer Groups"
+"All Stores","All Stores"
+Refresh,Refresh
+Delivery,Delivery
+"Delivery Date","Delivery Date"
+"Delivery Time Interval","Delivery Time Interval"
+"Delivery Comment","Delivery Comment"
+"Please update your Magento to version 2.2 or newer to make this setting available.","Please update your Magento to version 2.2 or newer to make this setting available."
+"Please update Amasty Base module. Re-upload it and replace all the files.","Please update Amasty Base module. Re-upload it and replace all the files."
+"If you want to perfrom a more complex configuration and need to have an advanced control over your order attributes, go to the settings page of Amasty Order Attributes module by clicking <a target='_blank' href='%1'>here</a>.","If you want to perfrom a more complex configuration and need to have an advanced control over your order attributes, go to the settings page of Amasty Order Attributes module by clicking <a target='_blank' href='%1'>here</a>."
+"If you need a wider range of configurable attributes available for you to customize and fine-tune your checkout page, please get our extension 'Order Attributes'. Learn more <a target='_blank' href='%1'>here</a>.","If you need a wider range of configurable attributes available for you to customize and fine-tune your checkout page, please get our extension 'Order Attributes'. Learn more <a target='_blank' href='%1'>here</a>."
+"You can set Terms and Conditions <a target='_blank' href='%1'>here</a>.","You can set Terms and Conditions <a target='_blank' href='%1'>here</a>."
+"Gift wrap %1","Gift wrap %1"
+"Gift messages has been successfully updated","Gift messages has been successfully updated"
+Update,Update
+Close,Close
+"Gift Wrap","Gift Wrap"
+"Delivery Time","Delivery Time"
+System,System
+"One Step Checkout","One Step Checkout"
+"Manage Checkout Fields","Manage Checkout Fields"
+"Fields information has been successfully updated","Fields information has been successfully updated"
+"'frontend_label' is required. Enter and try again.","'frontend_label' is required. Enter and try again."
+"Checkout Analytics","Checkout Analytics"
+"One-page checkout is turned off.","One-page checkout is turned off."
+"Guest checkout is disabled.","Guest checkout is disabled."
+Checkout,Checkout
+"Customer is already registered","Customer is already registered"
+"Your session has expired","Your session has expired"
+"Registration: A letter with further instructions will be sent to your email.","Registration: A letter with further instructions will be sent to your email."
+"Something went wrong with the registration.","Something went wrong with the registration."
+"Shipping Address","Shipping Address"
+"Extended gift wrapping is available in Amasty Gift Wrap %1","Extended gift wrapping is available in Amasty Gift Wrap %1"
+"Current setting duplicates the ‘Enabled’ setting from Gift Wrap plugin.","Current setting duplicates the ‘Enabled’ setting from Gift Wrap plugin."
+"Set ‘Yes’ to use functionality of <a href=""%1"">Gift Wrap</a> extension.","Set ‘Yes’ to use functionality of <a href=""%1"">Gift Wrap</a> extension."
+"If set to ‘No’, Gift Wrap will be disabled as well.","If set to ‘No’, Gift Wrap will be disabled as well."
+"Unsaved changes will be discarded.","Unsaved changes will be discarded."
+"Payment Page","Payment Page"
+"Below Shipping Address","Below Shipping Address"
+Classic,Classic
+Modern,Modern
+"Please, select a static block","Please, select a static block"
+No,No
+"After Placing an Order","After Placing an Order"
+"While Placing an Order","While Placing an Order"
+"Below the Selected Payment Method","Below the Selected Payment Method"
+"Below the Order Total","Below the Order Total"
+"Below the Shipping Address","Below the Shipping Address"
+"Below the Shipping Method","Below the Shipping Method"
+"Below Delivery Date/Time/Comment","Below Delivery Date/Time/Comment"
+"Below the Payment Method","Below the Payment Method"
+"Amasty One Step Checkout","Amasty One Step Checkout"
+Grid,Grid
+"Dropdown Menu","Dropdown Menu"
+"Could not save the fee: %1","Could not save the fee: %1"
+"Fee with id ""%1"" does not exist.","Fee with id ""%1"" does not exist."
+"Could not delete the fee: %1","Could not delete the fee: %1"
+"To configure which customer attributes will be required to checkout please check settings at Stores > Configuration > Customers > Customer Configuration > Name and Address Options","To configure which customer attributes will be required to checkout please check settings at Stores > Configuration > Customers > Customer Configuration > Name and Address Options"
+"To configure Postcode requirement for certain countries please check settings at Stores > Configuration > General > General > Country Options","To configure Postcode requirement for certain countries please check settings at Stores > Configuration > General > General > Country Options"
+"To configure State requirement for certain countries please check settings at Stores > Configuration > General > General > State Options","To configure State requirement for certain countries please check settings at Stores > Configuration > General > General > State Options"
+"Enabled Checkout Fields","Enabled Checkout Fields"
+"Disabled Checkout Fields","Disabled Checkout Fields"
+"Add Order Attribute","Add Order Attribute"
+"Install Order Attributes for Magento 2 by Amasty to unlock","Install Order Attributes for Magento 2 by Amasty to unlock"
+"Add Custom Fields","Add Custom Fields"
+"Add Customer Attribute","Add Customer Attribute"
+"Install Customer Attributes for Magento 2 by Amasty to unlock","Install Customer Attributes for Magento 2 by Amasty to unlock"
+"Whole Order","Whole Order"
+"Gift Message for %1 (optional)","Gift Message for %1 (optional)"
+"We can't find the quote item.","We can't find the quote item."
+Additional,Additional
+"Unable to save quotePasswords with ID %1. Error: %2","Unable to save quotePasswords with ID %1. Error: %2"
+"Unable to save new quotePasswords. Error: %1","Unable to save new quotePasswords. Error: %1"
+"QuotePasswords with specified ID ""%1"" not found.","QuotePasswords with specified ID ""%1"" not found."
+"QuotePasswords with specified Quote ID ""%1"" not found.","QuotePasswords with specified Quote ID ""%1"" not found."
+"Unable to remove quotePasswords with ID %1. Error: %2","Unable to remove quotePasswords with ID %1. Error: %2"
+"Unable to remove quotePasswords. Error: %1","Unable to remove quotePasswords. Error: %1"
+"Customer Email","Customer Email"
+"The confirmation request has been sent.","The confirmation request has been sent."
+"Thank you for your subscription.","Thank you for your subscription."
+"There was a problem with the subscription: %1","There was a problem with the subscription: %1"
+"Something went wrong with the subscription.","Something went wrong with the subscription."
+"Something went wrong while creating an account. Please contact us so we can assist you.","Something went wrong while creating an account. Please contact us so we can assist you."
+"Order Attributes","Order Attributes"
+"Not Installed","Not Installed"
+"If you need the full control over order attributes, 
+                        you can obtain Order Attributes extension ","If you need the full control over order attributes, 
+                        you can obtain Order Attributes extension "
+here,here
+Installed,Installed
+"Customer Attributes","Customer Attributes"
+"If you need the full control over customer attributes, 
+                            you can obtain Customer Attributes extension ","If you need the full control over customer attributes, 
+                            you can obtain Customer Attributes extension "
+"Manage Checkout Fields configuration page will become deprecated with one of upcoming One Step Checkout releases. Its features will be merged with ","Manage Checkout Fields configuration page will become deprecated with one of upcoming One Step Checkout releases. Its features will be merged with "
+"When disabling City, Country, State/Province, Zip/Postal Code, please keep in mind that shopping cart will also be affected since those attributes are used in estimations and calculations.","When disabling City, Country, State/Province, Zip/Postal Code, please keep in mind that shopping cart will also be affected since those attributes are used in estimations and calculations."
+"Need more custom fields? Please consider","Need more custom fields? Please consider"
+" extension."," extension."
+"Delivery Information","Delivery Information"
+"Static Block","Static Block"
+"Drag Icon","Drag Icon"
+"Custom Fields","Custom Fields"
+"Custom Field ","Custom Field "
+Submit,Submit
+"All custom fields have already been added. You can drag and drop them to the 'Disabled Checkout Fields' section, if you don't need these fields anymore.","All custom fields have already been added. You can drag and drop them to the 'Disabled Checkout Fields' section, if you don't need these fields anymore."
+"Need more Custom fields?","Need more Custom fields?"
+"Please consider ","Please consider "
+"Please use ","Please use "
+Field,Field
+Label,Label
+Width,Width
+Required,Required
+"Default Value","Default Value"
+"Drop fields here","Drop fields here"
+"Order Attribute","Order Attribute"
+"Customer Attribute","Customer Attribute"
+"Sender Name","Sender Name"
+"Sender Email","Sender Email"
+"Recipient Name","Recipient Name"
+"Recipient Email","Recipient Email"
+Message,Message
+"Maximum length of the message is %1 characters.","Maximum length of the message is %1 characters."
+label,label
+Loading...,Loading...
+"Order details:","Order details:"
+"Order Date:","Order Date:"
+Comments,Comments
+"Items Ordered","Items Ordered"
+"Gift Message for This Order","Gift Message for This Order"
+From,From
+To,To
+"Your order number is:","Your order number is:"
+"Your order # is:","Your order # is:"
+"We'll email you an order confirmation with details and tracking info.","We'll email you an order confirmation with details and tracking info."
+"Continue Shopping","Continue Shopping"
+"No options of this product are available.","No options of this product are available."
+"Choose an Option...","Choose an Option..."
+"Delivery Date Info","Delivery Date Info"
+"Number of Quotes*","Number of Quotes*"
+"* all orders as well as active and abandoned carts are considered as a quote","* all orders as well as active and abandoned carts are considered as a quote"
+"* form is completed if all mandatory fields are filled or, if the form is made up of only optional fields, when at least one field is filled","* form is completed if all mandatory fields are filled or, if the form is made up of only optional fields, when at least one field is filled"
+"Field Name","Field Name"
+"Field in, # of Quotes","Field in, # of Quotes"
+"Completion Rate, %","Completion Rate, %"
+"No Historycal Data","No Historycal Data"
+"Item in Cart","Item in Cart"
+"Items in Cart","Items in Cart"
+Qty,Qty
+"View Details","View Details"
+"Options Details","Options Details"
+"Email Address","Email Address"
+"You can create an account after checkout.","You can create an account after checkout."
+Password,Password
+"You already have an account with us. Sign in or continue as guest.","You already have an account with us. Sign in or continue as guest."
+"To register an account simply add a password.","To register an account simply add a password."
+"Confirm Password","Confirm Password"
+"Please confirm your password.","Please confirm your password."
+Login,Login
+"Forgot Your Password?","Forgot Your Password?"
+[edit],[edit]
+Message:,Message:
+Edit,Edit
+"New Address","New Address"
+"Select Method","Select Method"
+Price,Price
+"Method Title","Method Title"
+"Carrier Title","Carrier Title"
+"Sorry, no quotes are available for this order at this time","Sorry, no quotes are available for this order at this time"
+"No Payment Methods","No Payment Methods"
+Cancel,Cancel
+"Form Completion Rate of [[category]]: [[value]]%","Form Completion Rate of [[category]]: [[value]]%"
+"Form Completion Rate, %","Form Completion Rate, %"
+"Checkout Sections","Checkout Sections"
+Done,Done
+Sunday,Sunday
+Monday,Monday
+Tuesday,Tuesday
+Wednesday,Wednesday
+Thursday,Thursday
+Friday,Friday
+Saturday,Saturday
+Su,Su
+Mo,Mo
+Tu,Tu
+We,We
+Th,Th
+Fr,Fr
+Sa,Sa
+Sun,Sun
+Mon,Mon
+Tue,Tue
+Wed,Wed
+Thu,Thu
+Fri,Fri
+Sat,Sat
+January,January
+February,February
+March,March
+April,April
+May,May
+June,June
+July,July
+August,August
+September,September
+October,October
+November,November
+December,December
+Jan,Jan
+Feb,Feb
+Mar,Mar
+Apr,Apr
+Jun,Jun
+Jul,Jul
+Aug,Aug
+Sep,Sep
+Oct,Oct
+Nov,Nov
+Dec,Dec
+Next,Next
+Prev,Prev
+Wk,Wk
+Attention,Attention
+OK,OK
+"Place Order","Place Order"
+"This is a required field.","This is a required field."
+"Select Date","Select Date"
+"Are you sure you would like to remove this item from the shopping cart?","Are you sure you would like to remove this item from the shopping cart?"
+"Please update or cancel Billing Address Form.","Please update or cancel Billing Address Form."
+"Please update or cancel Shipping Address Form.","Please update or cancel Shipping Address Form."
+"No payment method selected","No payment method selected"
+"No shipping method selected","No shipping method selected"
+"Recipient Address","Recipient Address"
+Information,Information
+General,General
+"Enable One Step Checkout","Enable One Step Checkout"
+"Allow to Edit Products in the Order Summary","Allow to Edit Products in the Order Summary"
+"Enable JS and HTML bundling and minifying for checkout page","Enable JS and HTML bundling and minifying for checkout page"
+"Up to 30% faster checkout page load time and up to twice smaller bandwidth consumption due to reduced resources size.","Up to 30% faster checkout page load time and up to twice smaller bandwidth consumption due to reduced resources size."
+"How it works: the concept is similar to caching. Initially, checkout page starts loading with bundling disabled, but as soon as all files are loaded, all js and html files get minified and merged into one, so that the next time the page loads faster.","How it works: the concept is similar to caching. Initially, checkout page starts loading with bundling disabled, but as soon as all files are loaded, all js and html files get minified and merged into one, so that the next time the page loads faster."
+"Allow Guest Checkout","Allow Guest Checkout"
+"Let Customers Create an Account at Checkout","Let Customers Create an Account at Checkout"
+"Automatically Log in Customers After Creating an Account at Checkout","Automatically Log in Customers After Creating an Account at Checkout"
+"'Create an Account' Checkbox is Checked by Default","'Create an Account' Checkbox is Checked by Default"
+Design,Design
+"Texts and Default Values","Texts and Default Values"
+"Checkout Page Title","Checkout Page Title"
+"Checkout Page Description","Checkout Page Description"
+"Provide customers with important info about taxes (e.g. VAT) or any other payment specifics.<br/>HTML is allowed","Provide customers with important info about taxes (e.g. VAT) or any other payment specifics.<br/>HTML is allowed"
+"Checkout Text Font","Checkout Text Font"
+"Specify the <a href=""https://fonts.google.com/"" target=""_blank"">Google font</a> name. For example <strong>Roboto</strong>, <strong>Open Sans</strong> or <strong>Indie Flower</strong>
+                    <br/>Some fonts use extra parameters e.g. <strong>Molle:400i</strong> where 400 = regular, i = Italic (100 = thin, 700 = bold)","Specify the <a href=""https://fonts.google.com/"" target=""_blank"">Google font</a> name. For example <strong>Roboto</strong>, <strong>Open Sans</strong> or <strong>Indie Flower</strong>
+                    <br/>Some fonts use extra parameters e.g. <strong>Molle:400i</strong> where 400 = regular, i = Italic (100 = thin, 700 = bold)"
+"Default Shipping Method","Default Shipping Method"
+"Default Payment Method","Default Payment Method"
+"Default Country","Default Country"
+"Default Region/State","Default Region/State"
+"Default Zip/Postal Code","Default Zip/Postal Code"
+"Default City","Default City"
+Layout,Layout
+"Checkout Design","Checkout Design"
+"Checkout Page Layout","Checkout Page Layout"
+"Please keep in mind that, for 3 Columns layout, third column will be displayed only if Customer's Order may require shipping (contains non-Virtual products, in most cases).","Please keep in mind that, for 3 Columns layout, third column will be displayed only if Customer's Order may require shipping (contains non-Virtual products, in most cases)."
+"Display Billing Address On","Display Billing Address On"
+"Place Order Button Position","Place Order Button Position"
+"Please keep in mind that some payment methods may override this option, thus for such methods the button may remain in Payment Methods block regardless of this option's value.","Please keep in mind that some payment methods may override this option, thus for such methods the button may remain in Payment Methods block regardless of this option's value."
+"Re-order blocks via drag and drop","Re-order blocks via drag and drop"
+"Address Formatting","Address Formatting"
+"Number of Lines in a Street Address","Number of Lines in a Street Address"
+"Valid range: 1-4","Valid range: 1-4"
+"Display Multiple Shipping Address In","Display Multiple Shipping Address In"
+"Color Scheme","Color Scheme"
+"Heading Text Color","Heading Text Color"
+"Order Summary Background","Order Summary Background"
+"Checkout Background Color","Checkout Background Color"
+"Place Order Button Color","Place Order Button Color"
+"Additional Fields and Other Extras","Additional Fields and Other Extras"
+"Show VAT Number on Storefront","Show VAT Number on Storefront"
+"To show VAT number on Storefront, set Show VAT Number on Storefront option to Yes.","To show VAT number on Storefront, set Show VAT Number on Storefront option to Yes."
+"Discount Field","Discount Field"
+"Newsletter Checkbox","Newsletter Checkbox"
+"Newsletter is Checked by Default","Newsletter is Checked by Default"
+"Enable Terms and Conditions","Enable Terms and Conditions"
+"Terms and Conditions Checkbox Positioning","Terms and Conditions Checkbox Positioning"
+"Order Comment","Order Comment"
+"Optional UI Elements","Optional UI Elements"
+"Display Header and Footer","Display Header and Footer"
+"Top Block","Top Block"
+"Select custom CMS block name to be displayed above the checkout","Select custom CMS block name to be displayed above the checkout"
+"Bottom Block","Bottom Block"
+"Select custom CMS block name to be displayed below the checkout","Select custom CMS block name to be displayed below the checkout"
+"Success Page Custom Block","Success Page Custom Block"
+"Specify the ID of custom CMS block to be displayed on the checkout success page","Specify the ID of custom CMS block to be displayed on the checkout success page"
+Enabled,Enabled
+"Delivery Date Field is Mandatory","Delivery Date Field is Mandatory"
+"Available Days","Available Days"
+"Available Hours","Available Hours"
+"Please specify the timeframe available for delivery. Example: 8-12, 14-18, 20-24<br/>
+                    Use <a target=""_blank"" href=""https://amasty.com/delivery-date-for-magento-2.html?utm_source=extension&utm_medium=link&utm_campaign=osc-delivery-date-m2"">Amasty Delivery Date</a> to limit or restrict delivery for the same or next day the order was placed.","Please specify the timeframe available for delivery. Example: 8-12, 14-18, 20-24<br/>
+                    Use <a target=""_blank"" href=""https://amasty.com/delivery-date-for-magento-2.html?utm_source=extension&utm_medium=link&utm_campaign=osc-delivery-date-m2"">Amasty Delivery Date</a> to limit or restrict delivery for the same or next day the order was placed."
+"Enable Delivery Comment","Enable Delivery Comment"
+"Delivery Comment Default Text","Delivery Comment Default Text"
+"Specify default text example for delivery comment.","Specify default text example for delivery comment."
+Geolocation,Geolocation
+"Geo IP Location","Geo IP Location"
+"Detect User Country Based on the IP Address and Automatically Fills it in at Checkout","Detect User Country Based on the IP Address and Automatically Fills it in at Checkout"
+"Google Address Suggestion","Google Address Suggestion"
+"Address auto complete while user is typing, using geolocation Google technology. The browser may ask permissions for Location","Address auto complete while user is typing, using geolocation Google technology. The browser may ask permissions for Location"
+"Google API Key","Google API Key"
+"Click <a href=""https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform"" target=""_blank"">here</a> to get API key","Click <a href=""https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform"" target=""_blank"">here</a> to get API key"
+"Enable Extended Configuration","Enable Extended Configuration"
+"Extended gift wrapping is available in Amasty Gift Wrap extension","Extended gift wrapping is available in Amasty Gift Wrap extension"
+"Allow Gift Messages on Order Level","Allow Gift Messages on Order Level"
+"Allow Gift Messages for Order Items","Allow Gift Messages for Order Items"
+"Gift Wrap Fee","Gift Wrap Fee"
+"Checkout page cache (including but not limited to UI components configuration, position of page elements, inactive heavyweight components of the page and so on)","Checkout page cache (including but not limited to UI components configuration, position of page elements, inactive heavyweight components of the page and so on)"
+"Default Values","Default Values"
+"Customer Information & Shipping Address","Customer Information & Shipping Address"
+"Billing Address","Billing Address"
+"Gift Messages","Gift Messages"
+"Add a gift message","Add a gift message"
+"Sign Up for Our Newsletter","Sign Up for Our Newsletter"
+"Create an Account","Create an Account"
+"Date of Birth","Date of Birth"

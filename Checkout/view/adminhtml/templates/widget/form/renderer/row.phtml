@@ -1,0 +1,99 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/** @var \Amasty\Checkout\Block\Adminhtml\Field\Edit\Group\Row\Renderer $block */
+
+use Amasty\Checkout\Model\FormManagement;
+
+$field = $block->getElement()->getData('field');
+$namePrefix = "field[{$field->getData('attribute_id')}]";
+$isStoreSelected = $block->isStoreSelected();
+$fieldDepend = $field->getData('field_depend');
+?>
+
+<tr <?= (($fieldDepend === FormManagement::ORDER_ATTRIBUTES_DEPEND
+        || $fieldDepend === FormManagement::CUSTOMER_ATTRIBUTES_DEPEND)
+    && $isStoreSelected) ? 'class="unsortable"' : '' ?>>
+    <td>
+        <div class="draggable-handle"></div>
+        <input type="hidden"
+               name="<?= $block->escapeHtml($namePrefix) ?>[id]"
+               value="<?= $block->escapeHtml($field->getId()) ?>"/>
+        <input data-role="sort-order"
+               type="hidden"
+               name="<?= $block->escapeHtml($namePrefix) ?>[sort_order]"
+               value="<?= $block->escapeHtml($field->getSortOrder()) ?>"/>
+        <input data-role="enabled"
+               type="hidden"
+               name="<?= $block->escapeHtml($namePrefix) ?>[enabled]"
+               value="<?= $block->escapeHtml($field->getEnabled()) ?>"/>
+    </td>
+    <td data-role="field"
+        id="amcheckout-field-<?= $block->escapeHtml($field->getData('attribute_code')) ?>"
+        name="<?= $block->escapeHtml(__($field->getData('default_label'))) ?>">
+        <?= $block->escapeHtml(__($field->getData('default_label'))) ?>
+    </td>
+    <td>
+        <input data-role="label"
+               type="text"
+               name="<?= $block->escapeHtml($namePrefix) ?>[label]"
+               value="<?= $block->escapeHtml($field->getData('label')) ?>"
+                <?= $field->getData('use_default') && $isStoreSelected ? 'disabled=disabled' : '' ?>/>
+    </td>
+    <td data-role="width-control" class="width-control <?= ($fieldDepend === FormManagement::ORDER_ATTRIBUTES_DEPEND
+            || $fieldDepend === FormManagement::CUSTOMER_ATTRIBUTES_DEPEND) ? '-empty' : '' ?>">
+        <div data-role="width-slider"></div>
+        <input class="validate-digits-range digits-range-0-100"
+               data-role="width-input"
+               name="<?= $block->escapeHtml($namePrefix) ?>[width]"
+               value="<?= $block->escapeHtml($field->getData('width')) ?>"
+            <?= $field->getData('use_default') && $isStoreSelected ? 'disabled=disabled' : '' ?>/>
+    </td>
+    <td class="center middle checkbox-cell amcheckout-required-option">
+        <div class="tooltip">
+            <input class="amcheckout-checkbox"
+                   type="checkbox"
+                   data-role="checkbox"
+                   value="<?= $block->escapeHtml($field->getData('required')) ?>"
+                   name="<?= $block->escapeHtml($namePrefix) ?>[required]"
+                <?= $field->isRequired() ? 'checked=checked' : '' ?>
+                <?= ($field->isNotChangeable()) || $isStoreSelected ? 'disabled=disabled' : '' ?>/>
+            <?php if ($field->isNotChangeable()) : ?>
+                <div class="tooltip-content"><?= $block->escapeHtml($field->getTooltipInfo()); ?></div>
+            <?php endif; ?>
+        </div>
+    </td>
+    <?php if ($isStoreSelected) : ?>
+        <td class="center middle checkbox-cell amcheckout-default-option" data-role="use-default">
+            <input  class="amcheckout-default-checkbox"
+                    data-role="use-default"
+                    name="<?= $block->escapeHtml($namePrefix) ?>[use_default]"
+                <?= $field->getData('use_default') ? 'checked=checked' : '' ?>
+                    type="checkbox"
+                    value="1"/>
+        </td>
+    <?php endif ?>
+    <?php if ($fieldDepend === FormManagement::ORDER_ATTRIBUTES_DEPEND) : ?>
+        <td class="amcheckout-module-link">
+            <a class="amcheckout-link"
+               href="<?= /* @noEscape */ $block->getOrderAttrUrl($field->getData('attribute_id')) ?>"
+               target="_blank">
+                <span><?= $block->escapeHtml(__('Order Attribute')) ?></span>
+            </a>
+        </td>
+    <?php endif ?>
+    <?php if ($fieldDepend === FormManagement::CUSTOMER_ATTRIBUTES_DEPEND) : ?>
+        <td class="amcheckout-module-link">
+            <a class="amcheckout-link"
+               href="<?= $block->escapeHtml($block->getCustomerAttrUrl($field->getData('attribute_id'))) ?>"
+               target="_blank">
+                <span class="amcheckout-label"><?= $block->escapeHtml(__('Customer Attribute')) ?></span>
+            </a>
+        </td>
+    <?php endif ?>
+</tr>

@@ -1,0 +1,124 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+// @codingStandardsIgnoreFile
+/** @var $block \Magento\GiftCard\Block\Catalog\Product\View\Type\Giftcard */
+$_product = $block->getProduct();
+$_id = $_product->getId();
+$buyRequest = $block->getItem()->getBuyRequest();
+$giftCustomCardAmount = false;
+$giftCardAmount = false;
+
+if ($buyRequest) {
+    if ($buyRequest->getGiftcardAmount() === 'custom' || !$buyRequest->getGiftcardAmount()) {
+        $giftCustomCardAmount = $buyRequest->getCustomGiftcardAmount();
+    } else {
+        $giftCardAmount = $buyRequest->getGiftcardAmount();
+    }
+}
+?>
+<div class="giftcard form" data-container-for="giftcard_info">
+    <?= $block->getChildHtml('product_type_data_extra') ?>
+    <?php if ($_product->isSaleable() && $block->isConfigured($_product)): ?>
+        <?php if ($giftCustomCardAmount) : ?>
+            <input type="hidden"
+                   id="custom_giftcard_amount"
+                   name="custom_giftcard_amount"
+                   value="<?= $giftCustomCardAmount ?>" />
+        <?php endif; ?>
+        <?php if ($giftCardAmount) : ?>
+            <input type="hidden"
+                   id="giftcard_amount"
+                   name="giftcard_amount"
+                   value="<?= $giftCardAmount ?>" />
+        <?php endif; ?>
+        <fieldset class="fieldset giftcard send">
+            <div class="field sender required">
+                <label for="giftcard_sender_name" class="label">
+                    <span><?= $block->escapeHtml(__('Sender Name')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           id="giftcard_sender_name"
+                           name="giftcard_sender_name"
+                           class="required-entry input-text"
+                           value="<?= $block->escapeHtml($block->getDefaultSenderName()) ?>" />
+                </div>
+            </div>
+            <?php if ($block->isEmailAvailable($_product)): ?>
+                <div class="field sender email required">
+                    <label for="giftcard_sender_email" class="label">
+                        <span><?= $block->escapeHtml(__('Sender Email')) ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="email"
+                               id="giftcard_sender_email"
+                               name="giftcard_sender_email"
+                               class="validate-email required-entry input-text"
+                               value="<?= $block->escapeHtml($block->getDefaultSenderEmail()) ?>"/>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="field recipient required">
+                <label for="giftcard_recipient_name" class="label">
+                    <span><?= $block->escapeHtml(__('Recipient Name')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           id="giftcard_recipient_name"
+                           name="giftcard_recipient_name"
+                           class="required-entry input-text"
+                           value="<?= $block->escapeHtml($block->getDefaultValue('giftcard_recipient_name')) ?>" />
+                </div>
+            </div>
+            <?php if ($block->isEmailAvailable($_product)): ?>
+                <div class="field recipient email required">
+                    <label for="giftcard_recipient_email" class="label">
+                        <span><?= $block->escapeHtml(__('Recipient Email')) ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="email"
+                               id="giftcard_recipient_email"
+                               name="giftcard_recipient_email"
+                               class="validate-email required-entry input-text"
+                               value="<?= $block->escapeHtml(
+                                       $block->getDefaultValue('giftcard_recipient_email')
+                               ) ?>"/>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($block->isMessageAvailable($_product)): ?>
+                <div class="field text">
+                    <label for="giftcard-message" class="label">
+                        <span><?= $block->escapeHtml(__('Message')) ?></span>
+                    </label>
+                    <div class="control">
+                        <textarea name="giftcard_message" id="giftcard-message"
+                                  class="input-text giftcard-message-max-length"
+                            <?php if ($block->getMessageMaxLength()) {
+                                $errorMessage = "'" . __(
+                                        'Maximum length of the message is %1 characters.',
+                                        $block->getMessageMaxLength()
+                                    ) . "'";
+                                /* @escapeNotVerified */
+                                echo 'data-validate="{maxlength:' . $block->getMessageMaxLength()
+                                    . ',messages:{maxlength:' . $errorMessage . '}}"';
+                            } ?>
+                            cols="5" rows="3"><?= $block->escapeHtml(
+                                $block->getDefaultValue('giftcard_message')
+                            ) ?></textarea>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </fieldset>
+    <?php elseif ($_product->isAvailable() && $block->isConfigured($_product)): ?>
+        <?= /* @escapeNotVerified */ $block->getProductPrice($_product) ?>
+    <?php endif; ?>
+</div>

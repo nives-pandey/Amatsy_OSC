@@ -1,0 +1,75 @@
+//
+//  Checkout Item Component inside Layout Builder
+//  ____________________________________________
+
+@ambuilder-drag-icon__width: 12px;
+@ambuilder-drag-icon__height: 26px;
+
+.ambuilder-checkout-item {
+    & {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 15px;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        background: #2e87d1;
+        color: #fff;
+        font-size: 20px;
+        cursor: move;
+    }
+
+    .static & {
+        background: #2e87d19c;
+        cursor: not-allowed;
+    }
+
+    .ambuilder-static {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 15px;
+    }
+
+    .ambuilder-icon {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: @ambuilder-drag-icon__width;
+        height: @ambuilder-drag-icon__height;
+    }
+
+    .ambuilder-icon .ambuilder-drag {
+        width: @ambuilder-drag-icon__width;
+        height: @ambuilder-drag-icon__height;
+    }
+
+    .ambuilder-title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .ambuilder-input {
+        box-sizing: border-box;
+        padding: 8px;
+        max-width: 100%;
+        font-size: 14px;
+        cursor: text;
+    }
+
+    .ambuilder-input-wrapper {
+        max-width: 100%;
+    }
+}
+
+.ambuilder-layout-container.-disabled .ambuilder-checkout-item {
+    &,
+    .ambuilder-input {
+        cursor: not-allowed;
+    }
+}

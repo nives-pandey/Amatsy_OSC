@@ -1,0 +1,32 @@
+<div class="checkout-shipping-address" data-bind="if: visible">
+    <div class="shipping-address-details" data-bind="if: (isAddressDetailsVisible() && shippingInformationComponent())">
+        <!-- ko foreach: { data: shippingInformationComponent().elems, as: 'element' } -->
+            <!-- ko template: element.getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <button class="action action-edit-address amcheckout-button -edit"
+                type="button"
+                click="changeAddress">
+            <span data-bind="i18n: 'Edit'"></span>
+        </button>
+    </div>
+    <fieldset class="fieldset" data-bind="visible: isAddressListVisible">
+        <!-- ko template: 'Amasty_Checkout/shipping-address/shipping-address-components/list' --><!-- /ko -->
+
+        <div id="opc-new-shipping-address" class="shipping-address-form" data-bind="fadeVisible: isAddressFormVisible">
+            <!-- ko with: $parent -->
+            <render args="shippingFormTemplate" />
+            <!--/ko-->
+        </div>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action action-update" type="button" data-bind="click: updateAddress">
+                    <span data-bind="i18n: 'Update'"></span>
+                </button>
+                <button class="action action-cancel" type="button" data-bind="click: cancelAddressEdit">
+                    <span data-bind="i18n: 'Cancel'"></span>
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</div>

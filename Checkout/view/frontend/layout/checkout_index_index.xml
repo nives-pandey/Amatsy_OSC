@@ -1,0 +1,22 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\Checkout\Block\Onepage\CustomBlock\Block" name="top.custom_block" before="-">
+                <action method="setPosition">
+                    <argument name="position" xsi:type="string">top</argument>
+                </action>
+            </block>
+            <block class="Amasty\Checkout\Block\Onepage\CustomBlock\Block" name="bottom.custom_block" after="-">
+                <action method="setPosition">
+                    <argument name="position" xsi:type="string">bottom</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="bundleService" xsi:type="object">Amasty\Checkout\Model\Optimization\BundleService</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="page.main.title" remove="true"/>
+    </body>
+</page>

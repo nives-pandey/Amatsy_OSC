@@ -1,0 +1,106 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var \Amasty\Checkout\Block\Adminhtml\Renderer\Template $block */ ?>
+<?php if (!$block->isModuleExist('Amasty_Orderattr')): ?>
+    <div class="fields-comment message">
+        <?= $block->escapeHtml(__('Need more custom fields? Please consider')) ?>
+        <a href="https://amasty.com/order-attributes-for-magento-2.html" target="_blank">
+            <?= $block->escapeHtml(__('Order Attributes')) ?>
+        </a><?= $block->escapeHtml(__(' extension.')) ?>
+    </div>
+<?php endif; ?>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/lib/knockout/bindings/range',
+        'Magento_Theme/js/sortable'
+    ], function ($) {
+        $('[data-role="width-control"]').each(function (i, element) {
+            var input = $(this).find('[data-role="width-input"]');
+            var slider = $(element).children('[data-role="width-slider"]');
+
+            input.on('change', function () {
+                $(slider).slider('value', this.value);
+            });
+
+            slider.slider({
+                value: input.val(),
+                min: 0,
+                max: 100,
+                step: 10,
+                slide: function (event, ui) {
+                    if ($(this).parents('tr').find('[data-role="use-default"]').length) {
+                        if ($(this).parents('tr').find('[data-role="use-default"]')[1].checked == false) {
+                            input.val(ui.value);
+                        }
+                    } else {
+                        input.val(ui.value);
+                    }
+                }
+            });
+        });
+
+        $('[data-role="field-set"]').sortable({
+            connectWith: '[data-role="field-set"]',
+            items: "tr:not(.placeholder):not(.unsortable)",
+            update: update_field_info
+        });
+
+        function update_field_info() {
+            $('[data-role="field-set"]').each(function (i, fieldset) {
+                update_sort_order(fieldset);
+                update_status(fieldset);
+            });
+        }
+
+        function update_sort_order(fieldset) {
+            $(fieldset).find('input[data-role="sort-order"]').each(function (i, input) {
+                input.value = (i+1) * 10;
+            });
+        }
+
+        function update_status(fieldset) {
+            var status = $(fieldset).data('enabled');
+
+            $(fieldset).find('input[data-role="enabled"]').each(function (i, input) {
+                input.value = status;
+            });
+        }
+
+        $('[data-role="use-default"]').change(function () {
+            $(this).parents('tr').find('[data-role="label"]').prop('disabled', this.checked);
+            $(this).parents('tr').find('[data-role="width-input"]').prop('disabled', this.checked);
+
+            var fieldName =  $(this).parents('tr').find('[data-role="field"]').prop('id');
+
+            if (
+                fieldName !== "amcheckout-field-region"
+                && fieldName !== "amcheckout-field-postcode"
+                && fieldName !== "amcheckout-field-telephone"
+            ) {
+                $(this).parents('tr').find('[data-role="checkbox"]').prop('disabled', this.checked);
+            }
+        });
+
+        $('.checkbox-cell').click(function (event) {
+            if (event.target.localName != 'input') {
+                $(this).children('input[type=checkbox]').click();
+            }
+        });
+
+        $('[data-role="fields-table"]:first thead td').each(function (columnIndex) {
+            var maxWidth = $(this).outerWidth();
+
+            $('[data-role="fields-table"] thead td:nth-child('+(columnIndex+1)+')').each(function (i, td) {
+                maxWidth = Math.max($(td).outerWidth(), maxWidth);
+            });
+
+            $('[data-role="fields-table"] td:visible:nth-child('+(columnIndex+1)+')').css({width: maxWidth});
+        });
+    });
+</script>

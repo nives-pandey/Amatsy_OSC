@@ -1,0 +1,28 @@
+{
+    "name": "amasty/module-single-step-checkout",
+    "description": "One Step Checkout by Amasty",
+    "require": {
+        "php": "^7.1.0",
+        "amasty/base": ">=1.12.10",
+        "amasty/geoip": ">=1.5.5"
+    },
+    "suggest": {
+        "amasty/checkout-graph-ql": "Install checkout-graph-ql module to be able to use One Step Checkout GraphQL queries.",
+        "amasty/module-single-step-checkout-mftf-2": "Install module-single-step-checkout-mftf-2 module to be able to run One Step Checkout MFTF tests for Magento 2.3.5+ version.",
+        "amasty/module-single-step-checkout-mftf-3": "Install module-single-step-checkout-mftf-3 module to be able to run One Step Checkout MFTF tests for Magento 2.4.0+ version.",
+        "amasty/module-mixin-rewrite-patch": "Install mixin rewrite patch if you have a problem with extension on Magento 2.4.2 version on Checkout"
+    },
+    "type": "magento2-module",
+    "version": "3.1.1",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\Checkout\\": ""
+        }
+    }
+}

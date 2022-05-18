@@ -1,0 +1,44 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+    <?php if ($block->getOrderId()) :?>
+        <div class="success-messages">
+            <?php if ($block->getCanViewOrder()) :?>
+                <p><?= $block->escapeHtml(__('Your order number is:')) ?>
+                    <a href="<?= /* @noEscape */$block->getViewOrderUrl() ?>"
+                       class="order-number">
+                        <strong>
+                            <?= /* @noEscape */$block->getOrderId() ?>
+                        </strong>
+                    </a>
+                </p>
+            <?php  else : ?>
+                <p>
+                    <?= $block->escapeHtml(__('Your order # is:')) ?>
+                    <span>
+                        <?= /* @noEscape */$block->getOrderId() ?>
+                    </span>
+                </p>
+            <?php endif;?>
+            <p><?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
+        </div>
+        <?= $block->getChildHtml('details') ?>
+    <?php endif;?>
+
+    <?= $block->getAdditionalInfoHtml() ?>
+    <?= $block->getChildHtml('cms') ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="<?= /* @noEscape */$block->getUrl() ?>">
+                <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+            </a>
+        </div>
+    </div>
+</div>

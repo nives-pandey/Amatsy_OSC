@@ -1,0 +1,54 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php /** @var \Amasty\Checkout\Block\Adminhtml\Field\Edit\AdditionalOptions $block */ ?>
+<table>
+    <tr id="orderattr<?= ($block->isOrderAttributesEnable()) ? 'amasty_is_instaled' : 'amasty_not_instaled' ?>"
+        class="amasty-module-status">
+        <td class="name-wrapper">
+            <span class="module-name"><?= $block->escapeHtml(__('Order Attributes')) ?></span>
+        </td>
+    <?php if (!$block->isOrderAttributesEnable()) : ?>
+        <td>
+            <div class="value"><?= $block->escapeHtml(__('Not Installed')) ?></div>
+            <p class="note">
+                <span><?= $block->escapeHtml(__('If you need the full control over order attributes, 
+                        you can obtain Order Attributes extension ')) ?>
+                    <a href="https://amasty.com/order-attributes-for-magento-2.html"
+                       target="_blank"><?= $block->escapeHtml(__('here')) ?></a>
+                </span>
+            </p>
+        </td>
+    <?php else : ?>
+        <td>
+            <div class="value"><?= $block->escapeHtml(__('Installed')) ?></div>
+        </td>
+    <?php endif; ?>
+    </tr>
+    <tr id="customerattr_<?= ($block->isCustomerAttributesEnable()) ? 'amasty_is_instaled' : 'amasty_not_instaled'?>"
+        class="amasty-module-status">
+        <td class="name-wrapper">
+            <span class="module-name"><?= $block->escapeHtml(__('Customer Attributes')) ?></span>
+        </td>
+    <?php if (!$block->isCustomerAttributesEnable()) : ?>
+        <td>
+            <div class="value"><?= $block->escapeHtml(__('Not Installed')) ?></div>
+            <p class="note">
+                <span><?= $block->escapeHtml(__('If you need the full control over customer attributes, 
+                            you can obtain Customer Attributes extension ')) ?>
+                    <a href="https://amasty.com/customer-attributes-for-magento-2.html"
+                       target="_blank"><?= $block->escapeHtml(__('here')) ?></a>
+                </span>
+            </p>
+        </td>
+    <?php else : ?>
+        <td>
+            <div class="value"><?= $block->escapeHtml(__('Installed')) ?></div>
+        </td>
+    <?php endif; ?>
+    </tr>
+</table>

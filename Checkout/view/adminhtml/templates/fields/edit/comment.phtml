@@ -1,0 +1,14 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<div class="fields-comment message">
+    <?= $block->escapeHtml(__('Manage Checkout Fields configuration page will become deprecated with one of upcoming One Step Checkout releases. Its features will be merged with ')); ?>
+    <a href="<?=$block->escapeUrl($block->getUrl('adminhtml/system_config/edit/section/amasty_checkout', ['expand' => 'design/layout']))?>">Layout Management.</a>
+</div>
+<div class="fields-comment message">
+    <?= $block->escapeHtml(__('When disabling City, Country, State/Province, Zip/Postal Code, please keep in mind that shopping cart will also be affected since those attributes are used in estimations and calculations.')); ?>
+</div>

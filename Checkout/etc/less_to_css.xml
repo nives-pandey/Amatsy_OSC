@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:amasty:module:Amasty_Base:etc/less_to_css.xsd">
+    <module name="Amasty_Checkout">
+        <handle name="checkout_index_index" />
+        <cssOptions fileName="amcheckout" path="css/source/mkcss" />
+        <ifconfig>amasty_checkout/general/enabled</ifconfig>
+    </module>
+</config>

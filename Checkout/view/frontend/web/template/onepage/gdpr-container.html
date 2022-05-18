@@ -1,0 +1,7 @@
+<!-- ko if: $parents[1].getOneStepModel().getGdprComponent(block.name, $parents[1].gdprComponentTmpl) -->
+    <div class="amcheckout-onepage-gdpr-container">
+        <!-- ko with: $parents[1].getOneStepModel().getGdprComponent(block.name, $parents[1].gdprComponentTmpl) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+<!--/ko-->

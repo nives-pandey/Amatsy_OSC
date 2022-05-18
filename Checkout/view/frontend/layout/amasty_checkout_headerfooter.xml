@@ -1,0 +1,6 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--for 1 column layout move logo back to default place-->
+        <move element="logo" destination="header-wrapper"/>
+    </body>
+</page>

@@ -1,0 +1,24 @@
+<!-- ko ifnot: (fields.length === 0) -->
+    <table class="data-grid amcheckout-table">
+        <thead>
+            <tr>
+                <th data-bind="i18n: 'Field Name'" class="data-grid-th"></th>
+                <th data-bind="i18n: 'Field in, # of Quotes'" class="data-grid-th"></th>
+                <th data-bind="i18n: 'Completion Rate, %'" class="data-grid-th"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: fields -->
+            <tr>
+                <td data-bind="i18n: label"></td>
+                <td data-bind="text: size"></td>
+                <td data-bind="text: rate"></td>
+            </tr>
+        <!-- /ko -->
+        </tbody>
+    </table>
+<!-- /ko -->
+
+<!-- ko if: (fields.length === 0) -->
+    <p data-bind="i18n: 'No Historycal Data'" ></p>
+<!-- /ko -->

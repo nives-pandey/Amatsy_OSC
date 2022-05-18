@@ -1,0 +1,49 @@
+//
+//  Amasty One Step Checkout Helpers
+//  ___________________________________________
+
+// Selectable items helper
+._amcheckout-selectable-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+._amcheckout-selectable-item {
+    & {
+        display: block;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0 20px;
+        width: 100%;
+        border: 1px solid #f9f9f9;
+        border-radius: 2px;
+        background: #f9f9f9;
+        cursor: pointer;
+    }
+
+    &:not(:last-of-type) {
+        margin-bottom: 15px;
+    }
+
+    &:hover {
+        box-shadow: 0 2px 8px rgba(56, 77, 108, .4);
+    }
+
+    &.-selected {
+        border-color: @amcheckout-modern-main__color;
+    }
+}
+
+@media all and (min-width: @screen__m) {
+    ._amcheckout-selectable-item {
+        & {
+            width: 48%;
+        }
+
+        &:nth-last-child(-n + 2) {
+            margin-bottom: 0;
+        }
+    }
+}

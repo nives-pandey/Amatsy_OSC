@@ -1,0 +1,56 @@
+<li id="shipping" class="checkout-shipping-address amcheckout-shipping-address" data-bind="fadeVisible: visible()">
+    <p class="step-title amcheckout-title"
+       data-amcheckout-js="step-title"
+       data-bind="i18n: getNameShippingAddress()"
+       data-role="title"></p>
+    <div id="checkout-step-shipping"
+         class="step-content amcheckout-content"
+         data-amcheckout-js="step-content"
+         data-role="content"
+         data-bind="mageInit: {'checkoutCollapsibleSteps': {}}">
+        <div class="amcheckout-wrapper">
+            <!-- ko ifnot: quoteIsVirtual -->
+            <!-- ko fastForEach: getRegion('customer-email') -->
+                    <!-- ko fastForEach: getRegion('amazon-button-region') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+            <!--/ko-->
+
+            <!-- ko fastForEach: getRegion('address-list') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+
+            <!-- ko fastForEach: getRegion('address-list-additional-addresses') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+
+            <!-- ko ifnot: isFormInline -->
+            <!-- ko ifnot: window.isShippingAddressFormOverridden -->
+            <!-- Address form pop up -->
+            <button type="button"
+                    data-bind="click: showFormPopUp, visible: !isNewAddressAdded()"
+                    class="action action-show-popup amcheckout-button -new-address">
+                <span data-bind="i18n: 'New Address'"></span></button>
+            <div id="opc-new-shipping-address" data-bind="visible: isFormPopUpVisible">
+                <!-- ko template: 'Magento_Checkout/shipping-address/form' --><!-- /ko -->
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+
+            <!-- ko fastForEach: getRegion('before-form') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+
+            <!-- Inline address form -->
+            <!-- ko if: isFormInline -->
+            <!-- ko template: 'Magento_Checkout/shipping-address/form' --><!-- /ko -->
+            <!-- /ko -->
+
+            <!-- ko fastForEach: getRegion('billing-address-form-shared') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+    </div>
+</li>

@@ -1,0 +1,83 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Checkout
+ */
+?>
+<?php
+/**
+ * @var \Amasty\Checkout\Block\Onepage\Head $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<style>
+    <?php foreach ($block->getFields() as $code => $width): ?>
+    .fieldset.address div[name<?= $code === 'street' ? '*' : '$'?>=".<?= $block->escapeHtml($code) ?>"] {
+        width: <?= (float)$width ?>%;
+    }
+    <?php endforeach; ?>
+
+    <?php if ($font = $block->getCustomFont()): ?>
+    body {
+        font-family: '<?= $block->escapeHtml($font) ?>',
+        'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    }
+    <?php endif ?>
+
+    <?php if ($color = $block->getHeadingTextColor()): ?>
+    .step-title,
+    .amcheckout-step-container .amcheckout-title {
+        color: <?= $block->escapeHtml($color) ?> !important;
+    }
+    <?php endif ?>
+
+    <?php if ($color = $block->getBackgroundColor()): ?>
+    #checkout {
+        background: <?= $block->escapeHtml($color) ?> !important;
+    }
+    .am-submit-fixed #checkout-payment-method-load .actions-toolbar {
+        background: <?= $block->escapeHtml($color) ?> !important;
+    }
+
+    <?php endif ?>
+
+    <?php if ($color = $block->getSummaryBackgroundColor()): ?>
+    .opc-block-summary {
+        background-color: <?= $block->escapeHtml($color) ?> !important;
+    }
+    <?php endif ?>
+
+    <?php if ($color = $block->getButtonColor()): ?>
+    .primary .action.checkout,
+    .action.checkout.amasty {
+        background-color: <?= $block->escapeHtml($color['normal']) ?> !important;
+        border: none !important;
+    }
+    .primary .action.checkout:hover,
+    .action.checkout.amasty:hover {
+        background-color: <?= $block->escapeHtml($color['hover']) ?> !important;
+        border: none !important;
+    }
+    <?php endif ?>
+</style>
+
+<script type="text/javascript">
+    <?php if ($block->getConfigProvider()->getMultipleShippingAddress()): ?>
+        <?php // add mixin only for one state of config and only on checkout page ?>
+        require(['ko'], function (ko) {
+            window.isShippingAddressFormOverridden = ko.observable(false);
+        });
+
+        require.config({
+            config: {
+                mixins: {
+                    'Magento_Checkout/js/view/shipping-address/list': {
+                        'Amasty_Checkout/js/view/shipping-address/list-mixin': true
+                    }
+                }
+            }
+        });
+    <?php endif; ?>
+</script>
